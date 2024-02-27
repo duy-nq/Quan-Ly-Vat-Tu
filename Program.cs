@@ -22,10 +22,10 @@ namespace Quan_Ly_Vat_Tu
         public static String connection_string = "";
         public static String database = "QLVT_DATHANG";
         public static String server_name = "";
-        public static String main_server = "LAPTOP-S1E2VVUK";
-        public static String server_1 = "LAPTOP-S1E2VVUK\\MSSQLSERVER01";
-        public static String server_2 = "LAPTOP-S1E2VVUK\\MSSQLSERVER02";
-        public static String server_3 = "LAPTOP-S1E2VVUK\\MSSQLSERVER03";
+        public static String main_server = "HAJKU206";
+        public static String server_1 = "HAJKU206\\MSSQLSERVER01";
+        public static String server_2 = "HAJKU206\\MSSQLSERVER02";
+        public static String server_3 = "HAJKU206\\MSSQLSERVER03";
         
         public static String remote_username = "HTKN";
         public static String remote_password = "123";
@@ -70,7 +70,7 @@ namespace Quan_Ly_Vat_Tu
             
             try
             {
-                Program.connection_string = "Data Source=" + Program.server_name + ";Initial Catalog=" + Program.database + ";User ID=" +
+                Program.connection_string = "Data Source=" + Program.main_server + ";Initial Catalog=" + Program.database + ";User ID=" +
                       default_login + ";password=" + default_password;
                 Program.connection.ConnectionString = Program.connection_string;
                 Program.connection.Open();

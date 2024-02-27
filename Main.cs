@@ -19,5 +19,24 @@ namespace Quan_Ly_Vat_Tu
 
             Text = "Mã NV: " + Program.main_maNV + " - " + "Họ tên: " + Program.main_hoTen + " - " + "Nhóm: " + Program.main_group;
         }
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            Hide();
+
+            Program.connection.Close();
+
+            DangNhap loginForm = new DangNhap();
+
+            loginForm.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void Btn_Kho_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

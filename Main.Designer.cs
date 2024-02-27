@@ -78,8 +78,9 @@
             this.groupFunc.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupFunc.GroupStyle = DevExpress.Utils.GroupStyle.Light;
             this.groupFunc.Location = new System.Drawing.Point(0, 0);
+            this.groupFunc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupFunc.Name = "groupFunc";
-            this.groupFunc.Size = new System.Drawing.Size(1918, 124);
+            this.groupFunc.Size = new System.Drawing.Size(1644, 101);
             this.groupFunc.TabIndex = 4;
             // 
             // groupControl1
@@ -89,30 +90,35 @@
             this.groupControl1.Controls.Add(this.btnExit);
             this.groupControl1.Controls.Add(this.btnDangXuat);
             this.groupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Light;
-            this.groupControl1.Location = new System.Drawing.Point(1622, 0);
+            this.groupControl1.Location = new System.Drawing.Point(1390, 0);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(205, 120);
+            this.groupControl1.Size = new System.Drawing.Size(176, 98);
             this.groupControl1.TabIndex = 7;
             // 
             // btnExit
             // 
             this.btnExit.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btnExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExit.ImageOptions.SvgImage")));
-            this.btnExit.Location = new System.Drawing.Point(105, 31);
+            this.btnExit.Location = new System.Drawing.Point(90, 25);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(94, 84);
+            this.btnExit.Size = new System.Drawing.Size(81, 68);
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Thoát";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDangXuat
             // 
             this.btnDangXuat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btnDangXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDangXuat.ImageOptions.SvgImage")));
-            this.btnDangXuat.Location = new System.Drawing.Point(5, 31);
+            this.btnDangXuat.Location = new System.Drawing.Point(4, 25);
+            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(94, 84);
+            this.btnDangXuat.Size = new System.Drawing.Size(81, 68);
             this.btnDangXuat.TabIndex = 2;
             this.btnDangXuat.Text = "Đăng Xuất";
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // Group_BaoCao
             // 
@@ -125,9 +131,10 @@
             this.Group_BaoCao.Controls.Add(this.Btn_DMVT);
             this.Group_BaoCao.Controls.Add(this.Btn_DHCN);
             this.Group_BaoCao.GroupStyle = DevExpress.Utils.GroupStyle.Light;
-            this.Group_BaoCao.Location = new System.Drawing.Point(733, 0);
+            this.Group_BaoCao.Location = new System.Drawing.Point(628, 0);
+            this.Group_BaoCao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Group_BaoCao.Name = "Group_BaoCao";
-            this.Group_BaoCao.Size = new System.Drawing.Size(883, 120);
+            this.Group_BaoCao.Size = new System.Drawing.Size(757, 98);
             this.Group_BaoCao.TabIndex = 6;
             this.Group_BaoCao.Text = "Báo Cáo";
             // 
@@ -135,9 +142,10 @@
             // 
             this.Btn_THNX.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_THNX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_THNX.ImageOptions.SvgImage")));
-            this.Btn_THNX.Location = new System.Drawing.Point(735, 31);
+            this.Btn_THNX.Location = new System.Drawing.Point(630, 25);
+            this.Btn_THNX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_THNX.Name = "Btn_THNX";
-            this.Btn_THNX.Size = new System.Drawing.Size(140, 84);
+            this.Btn_THNX.Size = new System.Drawing.Size(120, 68);
             this.Btn_THNX.TabIndex = 8;
             this.Btn_THNX.Text = "Tổng Hợp Nhập Xuất";
             // 
@@ -145,9 +153,10 @@
             // 
             this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.simpleButton1.Location = new System.Drawing.Point(589, 31);
+            this.simpleButton1.Location = new System.Drawing.Point(505, 25);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(140, 84);
+            this.simpleButton1.Size = new System.Drawing.Size(120, 68);
             this.simpleButton1.TabIndex = 7;
             this.simpleButton1.Text = "Hoạt Động Nhân Viên";
             // 
@@ -155,9 +164,10 @@
             // 
             this.Btn_CTNX.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_CTNX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_CTNX.ImageOptions.SvgImage")));
-            this.Btn_CTNX.Location = new System.Drawing.Point(297, 31);
+            this.Btn_CTNX.Location = new System.Drawing.Point(255, 25);
+            this.Btn_CTNX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_CTNX.Name = "Btn_CTNX";
-            this.Btn_CTNX.Size = new System.Drawing.Size(140, 84);
+            this.Btn_CTNX.Size = new System.Drawing.Size(120, 68);
             this.Btn_CTNX.TabIndex = 6;
             this.Btn_CTNX.Text = "Chi Tiết Nhập Xuất";
             // 
@@ -165,9 +175,10 @@
             // 
             this.Btn_DSNV.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_DSNV.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_DSNV.ImageOptions.SvgImage")));
-            this.Btn_DSNV.Location = new System.Drawing.Point(5, 31);
+            this.Btn_DSNV.Location = new System.Drawing.Point(4, 25);
+            this.Btn_DSNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_DSNV.Name = "Btn_DSNV";
-            this.Btn_DSNV.Size = new System.Drawing.Size(140, 84);
+            this.Btn_DSNV.Size = new System.Drawing.Size(120, 68);
             this.Btn_DSNV.TabIndex = 5;
             this.Btn_DSNV.Text = "Danh Sách Nhân Viên";
             // 
@@ -175,9 +186,10 @@
             // 
             this.Btn_DMVT.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_DMVT.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_DMVT.ImageOptions.SvgImage")));
-            this.Btn_DMVT.Location = new System.Drawing.Point(151, 31);
+            this.Btn_DMVT.Location = new System.Drawing.Point(129, 25);
+            this.Btn_DMVT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_DMVT.Name = "Btn_DMVT";
-            this.Btn_DMVT.Size = new System.Drawing.Size(140, 84);
+            this.Btn_DMVT.Size = new System.Drawing.Size(120, 68);
             this.Btn_DMVT.TabIndex = 4;
             this.Btn_DMVT.Text = "Danh Mục Vật Tư";
             // 
@@ -185,9 +197,10 @@
             // 
             this.Btn_DHCN.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_DHCN.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_DHCN.ImageOptions.SvgImage")));
-            this.Btn_DHCN.Location = new System.Drawing.Point(443, 31);
+            this.Btn_DHCN.Location = new System.Drawing.Point(380, 25);
+            this.Btn_DHCN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_DHCN.Name = "Btn_DHCN";
-            this.Btn_DHCN.Size = new System.Drawing.Size(140, 84);
+            this.Btn_DHCN.Size = new System.Drawing.Size(120, 68);
             this.Btn_DHCN.TabIndex = 2;
             this.Btn_DHCN.Text = "Đơn Hàng Chưa Nhập";
             // 
@@ -199,9 +212,10 @@
             this.groupGiaoDich.Controls.Add(this.Btn_PhieuXuat);
             this.groupGiaoDich.Controls.Add(this.Btn_PhieuNhap);
             this.groupGiaoDich.GroupStyle = DevExpress.Utils.GroupStyle.Light;
-            this.groupGiaoDich.Location = new System.Drawing.Point(423, 0);
+            this.groupGiaoDich.Location = new System.Drawing.Point(363, 0);
+            this.groupGiaoDich.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupGiaoDich.Name = "groupGiaoDich";
-            this.groupGiaoDich.Size = new System.Drawing.Size(304, 120);
+            this.groupGiaoDich.Size = new System.Drawing.Size(261, 98);
             this.groupGiaoDich.TabIndex = 5;
             this.groupGiaoDich.Text = "Đơn - Phiếu";
             // 
@@ -209,9 +223,10 @@
             // 
             this.Btn_DDH.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_DDH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_DDH.ImageOptions.SvgImage")));
-            this.Btn_DDH.Location = new System.Drawing.Point(205, 31);
+            this.Btn_DDH.Location = new System.Drawing.Point(176, 25);
+            this.Btn_DDH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_DDH.Name = "Btn_DDH";
-            this.Btn_DDH.Size = new System.Drawing.Size(94, 84);
+            this.Btn_DDH.Size = new System.Drawing.Size(81, 68);
             this.Btn_DDH.TabIndex = 5;
             this.Btn_DDH.Text = "Đơn Đặt Hàng";
             // 
@@ -219,9 +234,10 @@
             // 
             this.Btn_PhieuXuat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_PhieuXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_PhieuXuat.ImageOptions.SvgImage")));
-            this.Btn_PhieuXuat.Location = new System.Drawing.Point(105, 31);
+            this.Btn_PhieuXuat.Location = new System.Drawing.Point(90, 25);
+            this.Btn_PhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_PhieuXuat.Name = "Btn_PhieuXuat";
-            this.Btn_PhieuXuat.Size = new System.Drawing.Size(94, 84);
+            this.Btn_PhieuXuat.Size = new System.Drawing.Size(81, 68);
             this.Btn_PhieuXuat.TabIndex = 4;
             this.Btn_PhieuXuat.Text = "Phiếu Xuất";
             // 
@@ -229,9 +245,10 @@
             // 
             this.Btn_PhieuNhap.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_PhieuNhap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_PhieuNhap.ImageOptions.SvgImage")));
-            this.Btn_PhieuNhap.Location = new System.Drawing.Point(5, 31);
+            this.Btn_PhieuNhap.Location = new System.Drawing.Point(4, 25);
+            this.Btn_PhieuNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_PhieuNhap.Name = "Btn_PhieuNhap";
-            this.Btn_PhieuNhap.Size = new System.Drawing.Size(94, 84);
+            this.Btn_PhieuNhap.Size = new System.Drawing.Size(81, 68);
             this.Btn_PhieuNhap.TabIndex = 2;
             this.Btn_PhieuNhap.Text = "Phiếu Nhập";
             // 
@@ -243,8 +260,9 @@
             this.groupQuanLy.Controls.Add(this.Btn_NhanVien);
             this.groupQuanLy.GroupStyle = DevExpress.Utils.GroupStyle.Light;
             this.groupQuanLy.Location = new System.Drawing.Point(0, 0);
+            this.groupQuanLy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupQuanLy.Name = "groupQuanLy";
-            this.groupQuanLy.Size = new System.Drawing.Size(205, 120);
+            this.groupQuanLy.Size = new System.Drawing.Size(176, 98);
             this.groupQuanLy.TabIndex = 0;
             this.groupQuanLy.Text = "Quản Lý";
             // 
@@ -252,9 +270,10 @@
             // 
             this.Btn_TaoLogin.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_TaoLogin.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_TaoLogin.ImageOptions.SvgImage")));
-            this.Btn_TaoLogin.Location = new System.Drawing.Point(105, 31);
+            this.Btn_TaoLogin.Location = new System.Drawing.Point(90, 25);
+            this.Btn_TaoLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_TaoLogin.Name = "Btn_TaoLogin";
-            this.Btn_TaoLogin.Size = new System.Drawing.Size(94, 84);
+            this.Btn_TaoLogin.Size = new System.Drawing.Size(81, 68);
             this.Btn_TaoLogin.TabIndex = 1;
             this.Btn_TaoLogin.Text = "Tạo Login";
             // 
@@ -262,9 +281,10 @@
             // 
             this.Btn_NhanVien.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_NhanVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_NhanVien.ImageOptions.SvgImage")));
-            this.Btn_NhanVien.Location = new System.Drawing.Point(5, 31);
+            this.Btn_NhanVien.Location = new System.Drawing.Point(4, 25);
+            this.Btn_NhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_NhanVien.Name = "Btn_NhanVien";
-            this.Btn_NhanVien.Size = new System.Drawing.Size(94, 84);
+            this.Btn_NhanVien.Size = new System.Drawing.Size(81, 68);
             this.Btn_NhanVien.TabIndex = 0;
             this.Btn_NhanVien.Text = "Nhân Viên";
             // 
@@ -275,9 +295,10 @@
             this.Group_VatTuKho.Controls.Add(this.Btn_Kho);
             this.Group_VatTuKho.Controls.Add(this.Btn_VatTu);
             this.Group_VatTuKho.GroupStyle = DevExpress.Utils.GroupStyle.Light;
-            this.Group_VatTuKho.Location = new System.Drawing.Point(211, 0);
+            this.Group_VatTuKho.Location = new System.Drawing.Point(181, 0);
+            this.Group_VatTuKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Group_VatTuKho.Name = "Group_VatTuKho";
-            this.Group_VatTuKho.Size = new System.Drawing.Size(206, 120);
+            this.Group_VatTuKho.Size = new System.Drawing.Size(177, 98);
             this.Group_VatTuKho.TabIndex = 1;
             this.Group_VatTuKho.Text = "Vật Tư - Kho";
             // 
@@ -285,19 +306,22 @@
             // 
             this.Btn_Kho.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_Kho.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_Kho.ImageOptions.SvgImage")));
-            this.Btn_Kho.Location = new System.Drawing.Point(105, 31);
+            this.Btn_Kho.Location = new System.Drawing.Point(90, 25);
+            this.Btn_Kho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Kho.Name = "Btn_Kho";
-            this.Btn_Kho.Size = new System.Drawing.Size(94, 84);
+            this.Btn_Kho.Size = new System.Drawing.Size(81, 68);
             this.Btn_Kho.TabIndex = 4;
             this.Btn_Kho.Text = "Kho";
+            this.Btn_Kho.Click += new System.EventHandler(this.Btn_Kho_Click);
             // 
             // Btn_VatTu
             // 
             this.Btn_VatTu.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.Btn_VatTu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_VatTu.ImageOptions.SvgImage")));
-            this.Btn_VatTu.Location = new System.Drawing.Point(5, 31);
+            this.Btn_VatTu.Location = new System.Drawing.Point(4, 25);
+            this.Btn_VatTu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_VatTu.Name = "Btn_VatTu";
-            this.Btn_VatTu.Size = new System.Drawing.Size(94, 84);
+            this.Btn_VatTu.Size = new System.Drawing.Size(81, 68);
             this.Btn_VatTu.TabIndex = 2;
             this.Btn_VatTu.Text = "Vật Tư";
             // 
@@ -307,11 +331,12 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1918, 1040);
+            this.ClientSize = new System.Drawing.Size(1644, 845);
             this.Controls.Add(this.groupFunc);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Main";
             this.Text = "Trang Chủ";
             ((System.ComponentModel.ISupportInitialize)(this.groupFunc)).EndInit();

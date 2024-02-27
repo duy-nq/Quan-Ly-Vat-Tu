@@ -33,10 +33,12 @@ namespace Quan_Ly_Vat_Tu
             {
                 Program.connection.Open();
             }
-            
+          
             SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
+            Program.DT_ChiNhanh.Reset();
             da.Fill(Program.DT_ChiNhanh);
-
+            Program.connection.Close();
+            Cmb_ChiNhanh.Properties.Items.Clear();
             foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
             {
                 Cmb_ChiNhanh.Properties.Items.Add(dr["TenCN"]);
