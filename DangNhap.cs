@@ -17,11 +17,18 @@ namespace Quan_Ly_Vat_Tu
     {       
         public DangNhap()
         {
-            InitializeComponent();
-
-            if (Program.KetNoi_MainServer() == 1)
+            try
             {
-                Load_ChiNhanh();
+                InitializeComponent();
+                if (Program.KetNoi_MainServer() == 1)
+                {
+                    Load_ChiNhanh();
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Lỗi khi khởi tạo form Đăng Nhập: " + ex.Message);
+                Console.WriteLine(ex);
             }
         }
 
@@ -33,7 +40,8 @@ namespace Quan_Ly_Vat_Tu
             {
                 Program.connection.Open();
             }
-            
+
+            Console.WriteLine(Program.connection.ConnectionString);
             SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
             da.Fill(Program.DT_ChiNhanh);
 
@@ -49,17 +57,7 @@ namespace Quan_Ly_Vat_Tu
         private void Cmb_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.server_name = Program.Get_ServerName(Cmb_ChiNhanh.Text);
-            Console.WriteLine(Program.server_name);
-        }
-
-        private void Txt_Username_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txt_MatKhau_EditValueChanged(object sender, EventArgs e)
-        {
-
+            Console.WriteLine("Combo box thay doi " + Program.server_name);
         }
 
         private new Form IsActive(Type ftype, FormCollection forms)
@@ -112,7 +110,9 @@ namespace Quan_Ly_Vat_Tu
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    //Console.WriteLine(ex.Message);
+                    MessageBox.Show("Không tìm thấy thông tin tài khoản\n" + ex.Message, "", MessageBoxButtons.OK);
+                    return;
                 }
                 finally
                 {
@@ -127,9 +127,20 @@ namespace Quan_Ly_Vat_Tu
             Form form = IsActive(typeof(Main), Application.OpenForms);
             form?.Close();
             Main mf = new Main();
+            mf.HienThiMenu();
             mf.ShowDialog();
 
             Close();
+        }
+
+        private void Txt_Username_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txt_MatKhau_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

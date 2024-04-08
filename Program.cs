@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
+using dotenv.net;
+
 
 namespace Quan_Ly_Vat_Tu
 {
@@ -22,10 +24,10 @@ namespace Quan_Ly_Vat_Tu
         public static String connection_string = "";
         public static String database = "QLVT_DATHANG";
         public static String server_name = "";
-        public static String main_server = "LAPTOP-S1E2VVUK";
-        public static String server_1 = "LAPTOP-S1E2VVUK\\MSSQLSERVER01";
-        public static String server_2 = "LAPTOP-S1E2VVUK\\MSSQLSERVER02";
-        public static String server_3 = "LAPTOP-S1E2VVUK\\MSSQLSERVER03";
+        public static String main_server = "";
+        public static String server_1 = "";
+        public static String server_2 = "";
+        public static String server_3 = "";
         
         public static String remote_username = "HTKN";
         public static String remote_password = "123";
@@ -70,8 +72,10 @@ namespace Quan_Ly_Vat_Tu
             
             try
             {
-                Program.connection_string = "Data Source=" + Program.server_name + ";Initial Catalog=" + Program.database + ";User ID=" +
+                Console.WriteLine("test ketnoimainsv " + Program.server_name);
+                Program.connection_string = "Data Source=" + Program.main_server + ";Initial Catalog=" + Program.database + ";User ID=" +
                       default_login + ";password=" + default_password;
+                Console.WriteLine("test connection string " + Program.connection_string);
                 Program.connection.ConnectionString = Program.connection_string;
                 Program.connection.Open();
                 return 1;
@@ -105,14 +109,24 @@ namespace Quan_Ly_Vat_Tu
             return "ERR-NOT-FOUND";
         }
 
+        static void LoadEnvVariables()
+        {
+            DotEnv.Load();
 
+            Program.main_server = Environment.GetEnvironmentVariable("MAIN_SERVER");
+            Program.server_1 = Environment.GetEnvironmentVariable("SERVER_1");
+            Program.server_2 = Environment.GetEnvironmentVariable("SERVER_2");
+            Program.server_3 = Environment.GetEnvironmentVariable("SERVER_3");
+        }
 
         [STAThread]
         static void Main()
         {
+            LoadEnvVariables();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DangNhap());
         }
     }
 }
+    
