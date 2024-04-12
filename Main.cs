@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Quan_Ly_Vat_Tu
 {
@@ -19,6 +20,15 @@ namespace Quan_Ly_Vat_Tu
 
             Text = "Mã NV: " + Program.main_maNV + " - " + "Họ tên: " + Program.main_hoTen + " - " + "Nhóm: " + Program.main_group;
             Console.WriteLine(Text);
+        }
+
+        private new Form IsActive(Type ftype, FormCollection forms)
+        {
+            foreach (Form f in forms)
+            {
+                if (f.GetType() == ftype) return f;
+            }
+            return null;
         }
 
         private Form CheckExists(Type ftype)
@@ -48,6 +58,22 @@ namespace Quan_Ly_Vat_Tu
                 frm.MdiParent = this;
                 frm.Show();
             }
+        }
+
+        private void Btn_VatTu_Click(object sender, EventArgs e)
+        {
+            Form f = this.CheckExists(typeof(NhanVien));
+            if (f != null) { f.Activate(); }
+            else
+            {
+                NhanVien frm = new NhanVien();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
 
         }
 
@@ -59,20 +85,25 @@ namespace Quan_Ly_Vat_Tu
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             this.XoaForm();
-            this.Close();
-            if (Program.connection.State == ConnectionState.Open)
-            {
-                Program.connection.Close();
-            }
 
-            Form f = this.CheckExists(typeof(DangNhap));
-            if (f != null) { f.Activate(); }
+            Form f = this.IsActive(typeof(DangNhap), Application.OpenForms);
+            if (f != null)
+            {
+                f.Activate();
+
+                Program.username = Program.username_DN = "";
+                Program.password = Program.password_DN = "";
+
+                f.Show();
+            }
             else
             {
                 DangNhap frm = new DangNhap();
-                frm.MdiParent = this;
+                //frm.MdiParent = this;
                 frm.Show();
             }
+
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)

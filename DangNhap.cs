@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace Quan_Ly_Vat_Tu
 {
     public partial class DangNhap : DevExpress.XtraEditors.XtraForm
-    {       
+    {
         public DangNhap()
         {
             try
@@ -41,9 +41,11 @@ namespace Quan_Ly_Vat_Tu
                 Program.connection.Open();
             }
 
-            Console.WriteLine(Program.connection.ConnectionString);
-            SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
-            da.Fill(Program.DT_ChiNhanh);
+            if (Program.DT_ChiNhanh.Rows.Count == 0)
+            {
+                SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
+                da.Fill(Program.DT_ChiNhanh);
+            }
 
             foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
             {
@@ -57,7 +59,6 @@ namespace Quan_Ly_Vat_Tu
         private void Cmb_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.server_name = Program.Get_ServerName(Cmb_ChiNhanh.Text);
-            Console.WriteLine("Combo box thay doi " + Program.server_name);
         }
 
         private new Form IsActive(Type ftype, FormCollection forms)
@@ -71,7 +72,7 @@ namespace Quan_Ly_Vat_Tu
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (Txt_MatKhau.Text == "" || Txt_Username.Text == "")
+            if (Txt_MatKhau.Text.Trim() == "" || Txt_Username.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
                 return;
@@ -82,6 +83,7 @@ namespace Quan_Ly_Vat_Tu
 
             Program.username_DN = Program.username;
             Program.password_DN = Program.password;
+            Program.main_chinhanh = Cmb_ChiNhanh.SelectedIndex;
 
             if (Program.server_name == null)
             {
@@ -107,10 +109,11 @@ namespace Quan_Ly_Vat_Tu
                             Program.main_maNV = reader.GetString(0);
                         }
                     }
+
+                    reader.Close();
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine(ex.Message);
                     MessageBox.Show("Không tìm thấy thông tin tài khoản\n" + ex.Message, "", MessageBoxButtons.OK);
                     return;
                 }
@@ -123,6 +126,7 @@ namespace Quan_Ly_Vat_Tu
             else return;
 
             Hide();
+            Txt_Username.Text = Txt_MatKhau.Text = "";
 
             Form form = IsActive(typeof(Main), Application.OpenForms);
             form?.Close();

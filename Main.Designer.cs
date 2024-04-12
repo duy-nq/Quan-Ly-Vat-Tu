@@ -102,7 +102,7 @@
             // Btn_Thoat
             // 
             this.Btn_Thoat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.Btn_Thoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExit.ImageOptions.SvgImage")));
+            this.Btn_Thoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_Thoat.ImageOptions.SvgImage")));
             this.Btn_Thoat.Location = new System.Drawing.Point(105, 31);
             this.Btn_Thoat.Name = "Btn_Thoat";
             this.Btn_Thoat.Size = new System.Drawing.Size(94, 84);
@@ -113,7 +113,7 @@
             // Btn_DangXuat
             // 
             this.Btn_DangXuat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.Btn_DangXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDangXuat.ImageOptions.SvgImage")));
+            this.Btn_DangXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_DangXuat.ImageOptions.SvgImage")));
             this.Btn_DangXuat.Location = new System.Drawing.Point(5, 31);
             this.Btn_DangXuat.Name = "Btn_DangXuat";
             this.Btn_DangXuat.Size = new System.Drawing.Size(94, 84);
@@ -308,6 +308,7 @@
             this.Btn_VatTu.Size = new System.Drawing.Size(94, 84);
             this.Btn_VatTu.TabIndex = 2;
             this.Btn_VatTu.Text = "Vật Tư";
+            this.Btn_VatTu.Click += new System.EventHandler(this.Btn_VatTu_Click);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -354,6 +355,7 @@
             this.IsMdiContainer = true;
             this.Name = "Main";
             this.Text = "Trang Chủ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.groupFunc)).EndInit();
             this.groupFunc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

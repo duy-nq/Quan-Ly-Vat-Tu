@@ -38,6 +38,7 @@ namespace Quan_Ly_Vat_Tu
         public static String username_DN;
         public static String password_DN;
 
+        public static int main_chinhanh;
         public static String main_group;
         public static String main_hoTen;
         public static String main_maNV;
@@ -72,10 +73,8 @@ namespace Quan_Ly_Vat_Tu
             
             try
             {
-                Console.WriteLine("test ketnoimainsv " + Program.server_name);
                 Program.connection_string = "Data Source=" + Program.main_server + ";Initial Catalog=" + Program.database + ";User ID=" +
                       default_login + ";password=" + default_password;
-                Console.WriteLine("test connection string " + Program.connection_string);
                 Program.connection.ConnectionString = Program.connection_string;
                 Program.connection.Open();
                 return 1;
@@ -94,6 +93,30 @@ namespace Quan_Ly_Vat_Tu
             SqlDataAdapter Data_Adapter = new SqlDataAdapter(sql_query, connection);
             Data_Adapter.Fill(table);
             return table;
+        }
+
+        public static SqlDataReader ExecSqlDataReader(String cmd)
+        {
+            SqlDataReader myreader;
+
+            // SqlCommand sqlcmd = new SqlCommand(cmd, Program conn);
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Program.connection;
+            sqlcmd.CommandText = cmd;
+            sqlcmd.CommandType = CommandType.Text;
+
+            if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+            try
+            {
+                myreader = sqlcmd.ExecuteReader();
+                return myreader;
+            }
+            catch (SqlException ex)
+            {
+                Program.connection.Close();
+                MessageBox.Show(ex.Message);
+                return null;
+            }
         }
 
         public static String Get_ServerName(string tenCN)
