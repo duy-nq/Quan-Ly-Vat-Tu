@@ -22,6 +22,7 @@ namespace Quan_Ly_Vat_Tu
         public static String connection_string = "";
         public static String database = "QLVT_DATHANG";
         public static String server_name = "";
+        public static String remote_server_name = "";
         public static String main_server = "LAPTOP-S1E2VVUK";
         public static String server_1 = "LAPTOP-S1E2VVUK\\MSSQLSERVER01";
         public static String server_2 = "LAPTOP-S1E2VVUK\\MSSQLSERVER02";

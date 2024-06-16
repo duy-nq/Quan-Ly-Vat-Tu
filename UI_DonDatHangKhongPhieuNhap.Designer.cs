@@ -43,6 +43,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(88, 28);
             this.simpleButton1.TabIndex = 34;
             this.simpleButton1.Text = "PREVIEW";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // Cmb_ChiNhanh
             // 
@@ -56,6 +57,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.Cmb_ChiNhanh.Size = new System.Drawing.Size(325, 37);
             this.Cmb_ChiNhanh.TabIndex = 33;
+            this.Cmb_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.Cmb_ChiNhanh_SelectedIndexChanged_1);
             // 
             // labelControl4
             // 
@@ -97,6 +99,7 @@
             this.Controls.Add(this.labelControl4);
             this.Name = "UI_DonDatHangKhongPhieuNhap";
             this.Text = "UI_DonDatHangKhongPhieuNhap";
+            this.Load += new System.EventHandler(this.UI_DonDatHangKhongPhieuNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Cmb_ChiNhanh.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
