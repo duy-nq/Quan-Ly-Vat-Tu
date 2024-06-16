@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Cmb_ChiNhanh = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.Cmb_LoaiPhieu = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -36,25 +36,30 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.Cmb_ChiNhanh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cmb_LoaiPhieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
-            // Cmb_ChiNhanh
+            // Cmb_LoaiPhieu
             // 
-            this.Cmb_ChiNhanh.Location = new System.Drawing.Point(63, 145);
-            this.Cmb_ChiNhanh.Name = "Cmb_ChiNhanh";
-            this.Cmb_ChiNhanh.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.False;
-            this.Cmb_ChiNhanh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cmb_ChiNhanh.Properties.Appearance.Options.UseFont = true;
-            this.Cmb_ChiNhanh.Properties.AutoHeight = false;
-            this.Cmb_ChiNhanh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.Cmb_LoaiPhieu.Location = new System.Drawing.Point(63, 145);
+            this.Cmb_LoaiPhieu.Name = "Cmb_LoaiPhieu";
+            this.Cmb_LoaiPhieu.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.False;
+            this.Cmb_LoaiPhieu.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_LoaiPhieu.Properties.Appearance.Options.UseFont = true;
+            this.Cmb_LoaiPhieu.Properties.AutoHeight = false;
+            this.Cmb_LoaiPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.Cmb_ChiNhanh.Size = new System.Drawing.Size(212, 37);
-            this.Cmb_ChiNhanh.TabIndex = 44;
+            this.Cmb_LoaiPhieu.Properties.DropDownRows = 2;
+            this.Cmb_LoaiPhieu.Properties.Items.AddRange(new object[] {
+            "Phiếu nhập",
+            "Phiếu xuất"});
+            this.Cmb_LoaiPhieu.Properties.Tag = true;
+            this.Cmb_LoaiPhieu.Size = new System.Drawing.Size(212, 37);
+            this.Cmb_LoaiPhieu.TabIndex = 44;
             // 
             // labelControl2
             // 
@@ -75,7 +80,8 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(88, 28);
             this.simpleButton1.TabIndex = 42;
-            this.simpleButton1.Text = "IN BÁO CÁO";
+            this.simpleButton1.Text = "PREVIEW";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // labelControl1
             // 
@@ -153,7 +159,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 327);
-            this.Controls.Add(this.Cmb_ChiNhanh);
+            this.Controls.Add(this.Cmb_LoaiPhieu);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.labelControl1);
@@ -163,7 +169,7 @@
             this.Controls.Add(this.labelControl4);
             this.Name = "UI_SoLuongTriGiaNhapXuat";
             this.Text = "UI_SoLuongTriGiaNhapXuat";
-            ((System.ComponentModel.ISupportInitialize)(this.Cmb_ChiNhanh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cmb_LoaiPhieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
@@ -175,7 +181,7 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.ComboBoxEdit Cmb_ChiNhanh;
+        private DevExpress.XtraEditors.ComboBoxEdit Cmb_LoaiPhieu;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LabelControl labelControl1;

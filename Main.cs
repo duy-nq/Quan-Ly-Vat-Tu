@@ -35,8 +35,52 @@ namespace Quan_Ly_Vat_Tu
             Form form = isActive(typeof(UI_TongHopNhapXuat));
             if (form == null)
             {
-                UI_TongHopNhapXuat fnv = new UI_TongHopNhapXuat();
-                fnv.MdiParent = this;
+                UI_TongHopNhapXuat fnv = new UI_TongHopNhapXuat
+                {
+                    MdiParent = this
+                };
+                fnv.Show();
+            }
+            else form.Activate();
+        }
+
+        private void Btn_CTNX_Click(object sender, EventArgs e)
+        {
+            Form form = isActive(typeof(UI_SoLuongTriGiaNhapXuat));
+            if (form == null)
+            {
+                UI_SoLuongTriGiaNhapXuat fnv = new UI_SoLuongTriGiaNhapXuat
+                {
+                    MdiParent = this
+                };
+                fnv.Show();
+            }
+            else form.Activate();
+        }
+
+        private void Btn_DHCN_Click(object sender, EventArgs e)
+        {
+            Form form = isActive(typeof(UI_DonDatHangKhongPhieuNhap));
+            if (form == null)
+            {
+                UI_DonDatHangKhongPhieuNhap fnv = new UI_DonDatHangKhongPhieuNhap
+                {
+                    MdiParent = this
+                };
+                fnv.Show();
+            }
+            else form.Activate();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Form form = isActive(typeof(UI_HoatDongNhanVien));
+            if (form == null)
+            {
+                UI_HoatDongNhanVien fnv = new UI_HoatDongNhanVien
+                {
+                    MdiParent = this
+                };
                 fnv.Show();
             }
             else form.Activate();

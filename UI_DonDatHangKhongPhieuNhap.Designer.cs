@@ -42,7 +42,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(88, 28);
             this.simpleButton1.TabIndex = 34;
-            this.simpleButton1.Text = "IN BÁO CÁO";
+            this.simpleButton1.Text = "PREVIEW";
             // 
             // Cmb_ChiNhanh
             // 
