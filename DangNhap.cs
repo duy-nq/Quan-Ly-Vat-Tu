@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace Quan_Ly_Vat_Tu
 {
     public partial class DangNhap : DevExpress.XtraEditors.XtraForm
-    {       
+    {               
         public DangNhap()
         {
             InitializeComponent();

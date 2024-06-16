@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txt_TenNV = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -37,25 +37,24 @@
             this.dateEdit4 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            this.Cmb_DSNV = new DevExpress.XtraEditors.ComboBoxEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_TenNV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cmb_DSNV.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // textEdit1
+            // txt_TenNV
             // 
-            this.textEdit1.Enabled = false;
-            this.textEdit1.Location = new System.Drawing.Point(317, 177);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Size = new System.Drawing.Size(286, 34);
-            this.textEdit1.TabIndex = 38;
+            this.txt_TenNV.Enabled = false;
+            this.txt_TenNV.Location = new System.Drawing.Point(317, 177);
+            this.txt_TenNV.Name = "txt_TenNV";
+            this.txt_TenNV.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_TenNV.Properties.Appearance.Options.UseFont = true;
+            this.txt_TenNV.Size = new System.Drawing.Size(286, 34);
+            this.txt_TenNV.TabIndex = 38;
             // 
             // labelControl4
             // 
@@ -82,6 +81,7 @@
             this.simpleButton2.Size = new System.Drawing.Size(88, 28);
             this.simpleButton2.TabIndex = 36;
             this.simpleButton2.Text = "IN BÁO CÁO";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // labelControl2
             // 
@@ -161,27 +161,27 @@
             this.labelControl6.TabIndex = 30;
             this.labelControl6.Text = "MÃ NHÂN VIÊN";
             // 
-            // dateEdit1
+            // Cmb_DSNV
             // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(36, 177);
-            this.dateEdit1.Margin = new System.Windows.Forms.Padding(1);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateEdit1.Properties.Appearance.Options.UseFont = true;
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.Cmb_DSNV.Location = new System.Drawing.Point(36, 174);
+            this.Cmb_DSNV.Name = "Cmb_DSNV";
+            this.Cmb_DSNV.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.False;
+            this.Cmb_DSNV.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_DSNV.Properties.Appearance.Options.UseFont = true;
+            this.Cmb_DSNV.Properties.AutoHeight = false;
+            this.Cmb_DSNV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(212, 34);
-            this.dateEdit1.TabIndex = 29;
+            this.Cmb_DSNV.Size = new System.Drawing.Size(212, 37);
+            this.Cmb_DSNV.TabIndex = 39;
+            this.Cmb_DSNV.SelectedIndexChanged += new System.EventHandler(this.Cmb_DSNV_SelectedIndexChanged);
             // 
             // UI_HoatDongNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 384);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.Cmb_DSNV);
+            this.Controls.Add(this.txt_TenNV);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.labelControl2);
@@ -190,16 +190,14 @@
             this.Controls.Add(this.dateEdit4);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl6);
-            this.Controls.Add(this.dateEdit1);
             this.Name = "UI_HoatDongNhanVien";
             this.Text = "UI_HoatDongNhanVien";
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_TenNV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cmb_DSNV.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +205,7 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txt_TenNV;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -216,6 +214,6 @@
         private DevExpress.XtraEditors.DateEdit dateEdit4;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit Cmb_DSNV;
     }
 }

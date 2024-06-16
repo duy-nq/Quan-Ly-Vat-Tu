@@ -95,7 +95,7 @@ namespace Quan_Ly_Vat_Tu
 
         public static String Get_ServerName(string tenCN)
         {
-            foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
+            foreach (DataRow dr in DT_ChiNhanh.Rows)
             {
                 if (dr["TenCN"].ToString() == tenCN)
                 {

@@ -124,6 +124,12 @@
     <Compile Include="XtraReport4.Designer.cs">
       <DependentUpon>XtraReport4.cs</DependentUpon>
     </Compile>
+    <Compile Include="XtraReport5.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraReport5.Designer.cs">
+      <DependentUpon>XtraReport5.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XtraReport4.resx">
       <DependentUpon>XtraReport4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraReport5.resx">
+      <DependentUpon>XtraReport5.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
