@@ -173,6 +173,7 @@
             this.Btn_DSNV.Size = new System.Drawing.Size(140, 84);
             this.Btn_DSNV.TabIndex = 5;
             this.Btn_DSNV.Text = "Danh Sách Nhân Viên";
+            this.Btn_DSNV.Click += new System.EventHandler(this.Btn_DSNV_Click);
             // 
             // Btn_DMVT
             // 
@@ -183,6 +184,7 @@
             this.Btn_DMVT.Size = new System.Drawing.Size(140, 84);
             this.Btn_DMVT.TabIndex = 4;
             this.Btn_DMVT.Text = "Danh Mục Vật Tư";
+            this.Btn_DMVT.Click += new System.EventHandler(this.Btn_DMVT_Click);
             // 
             // Btn_DHCN
             // 

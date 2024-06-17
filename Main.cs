@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,6 +79,28 @@ namespace Quan_Ly_Vat_Tu
             if (form == null)
             {
                 UI_HoatDongNhanVien fnv = new UI_HoatDongNhanVien
+                {
+                    MdiParent = this
+                };
+                fnv.Show();
+            }
+            else form.Activate();
+        }
+
+        private void Btn_DMVT_Click(object sender, EventArgs e)
+        {
+            XtraReport6 DMVT = new XtraReport6();
+
+            ReportPrintTool print = new ReportPrintTool(DMVT);
+            print.ShowPreviewDialog();
+        }
+
+        private void Btn_DSNV_Click(object sender, EventArgs e)
+        {
+            Form form = isActive(typeof(UI_DanhSachNhanVien));
+            if (form == null)
+            {
+                UI_DanhSachNhanVien fnv = new UI_DanhSachNhanVien
                 {
                     MdiParent = this
                 };
