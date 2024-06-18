@@ -26,11 +26,22 @@ namespace Quan_Ly_Vat_Tu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KQ\\SERVER1;Initial Catalog=QLVT_DATHANG;User ID=sa;TrustServerCertifi" +
-            "cate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KQ\\SERVER1;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123;Trust" +
+            "ServerCertificate=True")]
         public string QLVT_DATHANGConnectionString {
             get {
                 return ((string)(this["QLVT_DATHANGConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KQ\\SERVER1;Initial Catalog=QLVT;User ID=sa;TrustServerCertificate=Tru" +
+            "e")]
+        public string QLVTConnectionString2 {
+            get {
+                return ((string)(this["QLVTConnectionString2"]));
             }
         }
     }

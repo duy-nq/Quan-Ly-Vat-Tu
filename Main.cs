@@ -62,11 +62,23 @@ namespace Quan_Ly_Vat_Tu
 
         private void Btn_VatTu_Click(object sender, EventArgs e)
         {
-            Form f = this.CheckExists(typeof(NhanVien));
+            Form f = this.CheckExists(typeof(VatTu));
             if (f != null) { f.Activate(); }
             else
             {
-                NhanVien frm = new NhanVien();
+                VatTu frm = new VatTu();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
+
+        private void Btn_TaoLogin_Click(object sender, EventArgs e)
+        {
+            Form f = this.CheckExists(typeof(TaoLogin));
+            if (f != null) { f.Activate(); }
+            else
+            {
+                TaoLogin frm = new TaoLogin();
                 frm.MdiParent = this;
                 frm.Show();
             }
@@ -109,6 +121,11 @@ namespace Quan_Ly_Vat_Tu
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Group_BaoCao_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

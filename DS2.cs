@@ -2,7 +2,7 @@
 {
 
 
-    partial class DS1
+    partial class DS2
     {
     }
 }

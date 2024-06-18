@@ -20,6 +20,7 @@ namespace Quan_Ly_Vat_Tu
         String macn = "";
         int vitri = 0;
         bool dangThem = false;
+
         public NhanVien()
         {
             InitializeComponent();
@@ -30,10 +31,12 @@ namespace Quan_Ly_Vat_Tu
             DS.EnforceConstraints = false;
             this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
             this.NHANVIENTableAdapter.Fill(this.DS.NhanVien);
-            this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
-            this.PHIEUXUATTableAdapter.Fill(this.DS.PhieuXuat);
-            this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
+            this.DATHANGTableAdapter.Connection.ConnectionString = Program.connection_string;
+            this.DATHANGTableAdapter.Fill(this.DS.DatHang);
+            this.PHIEUNHAPTableAdapter.Connection.ConnectionString = Program.connection_string;
             this.PHIEUNHAPTableAdapter.Fill(this.DS.PhieuNhap);
+            this.PHIEUXUATTableAdapter.Connection.ConnectionString = Program.connection_string;
+            this.PHIEUXUATTableAdapter.Fill(this.DS.PhieuXuat);
 
             macn = ((DataRowView)Bds_NhanVien[0])["MACN"].ToString();
 
@@ -50,17 +53,19 @@ namespace Quan_Ly_Vat_Tu
                 Cmb_ChiNhanh.Enabled = true;
                 Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
                 Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
+                Gc_NhanVien.Enabled = true;
                 Panel_NhapLieu.Enabled = false;
             } else
             {
                 Cmb_ChiNhanh.Enabled = false;
-                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = true;
-                Btn_LamMoi.Enabled = Btn_PhucHoi.Enabled = Btn_Thoat.Enabled = true;
+                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = true;
+                Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
                 Btn_PhucHoi.Enabled = Panel_NhapLieu.Enabled = false;
+                Gc_NhanVien.Enabled = true; 
             }
         }
 
-        private void Btn_Them_ItemClick(object sender, ItemClickEventArgs e)
+        private void Btn_Them_ItemClick_1(object sender, ItemClickEventArgs e)
         {
             dangThem = true;
             vitri = Bds_NhanVien.Position;
@@ -69,7 +74,7 @@ namespace Quan_Ly_Vat_Tu
             Bds_NhanVien.AddNew();
             Txt_MaNV.Enabled = true;
             Txt_MaCN.Text = macn;
-            Txt_MaCN.Enabled = false;    
+            Txt_MaCN.Enabled = false;
             Date_NgaySinh.EditValue = "";
 
             Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = false;
@@ -91,6 +96,11 @@ namespace Quan_Ly_Vat_Tu
         private void Btn_Xoa_ItemClick(object sender, ItemClickEventArgs e)
         {
             Int32 manv = 0;
+            if (Bds_DatHang.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa nhân viên này vì đã lập đơn hàng", "", MessageBoxButtons.OK);
+                return;
+            }
             if (Bds_PhieuNhap.Count > 0)
             {
                 MessageBox.Show("Không thể xóa nhân viên này vì đã lập phiếu nhập", "", MessageBoxButtons.OK);
@@ -171,7 +181,6 @@ namespace Quan_Ly_Vat_Tu
 
         private void Btn_Ghi_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Console.WriteLine("test dangThem: " + dangThem);
             if (!KiemTraNhapLieu()) { return; }
 
             if (Program.connection.State == ConnectionState.Closed)
@@ -180,7 +189,7 @@ namespace Quan_Ly_Vat_Tu
             }
 
             String Sql_Query =
-                "EXEC QLVT_DATHANG.dbo.sp_KiemTraNhanVien '" + Txt_MaNV.Text.Trim() + "'";
+                "EXEC QLVT.dbo.SP_KiemTraNhanVien '" + Txt_MaNV.Text.Trim() + "'";
             SqlCommand command = new SqlCommand(Sql_Query, Program.connection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -222,7 +231,12 @@ namespace Quan_Ly_Vat_Tu
         private void Btn_PhucHoi_ItemClick(object sender, ItemClickEventArgs e)
         {
             Bds_NhanVien.CancelEdit();
-            if (Btn_Them.Enabled == false) Bds_NhanVien.Position = vitri;
+            if (Btn_Them.Enabled == false && dangThem == true)
+            {
+                Bds_NhanVien.RemoveCurrent();
+                Bds_NhanVien.Position = vitri;
+                dangThem = false;
+            }
 
             Gc_NhanVien.Enabled = true;
             Panel_NhapLieu.Enabled = false;
@@ -270,13 +284,68 @@ namespace Quan_Ly_Vat_Tu
             {
                 this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
                 this.NHANVIENTableAdapter.Fill(this.DS.NhanVien);
-                this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
+                this.PHIEUXUATTableAdapter.Connection.ConnectionString = Program.connection_string;
                 this.PHIEUXUATTableAdapter.Fill(this.DS.PhieuXuat);
-                this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
+                this.PHIEUNHAPTableAdapter.Connection.ConnectionString = Program.connection_string;
                 this.PHIEUNHAPTableAdapter.Fill(this.DS.PhieuNhap);
 
                 macn = ((DataRowView)Bds_NhanVien[0])["MACN"].ToString();
             }
+        }
+
+        private void nGAYSINHDateEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nGAYSINHLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trangThaiXoaCheckEdit_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trangThaiXoaLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Gc_NhanVien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Panel_NhapLieu_Paint(object sender, PaintEventArgs e)
+        {
+                
+        }
+
+        private void nhanVienGridControl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trangThaiXoaCheckEdit_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nGAYSINHDateEdit_EditValueChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Bds_PhieuNhap_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DATHANGBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

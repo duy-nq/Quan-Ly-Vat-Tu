@@ -137,6 +137,7 @@
             this.Group_BaoCao.Size = new System.Drawing.Size(883, 120);
             this.Group_BaoCao.TabIndex = 6;
             this.Group_BaoCao.Text = "Báo Cáo";
+            this.Group_BaoCao.Paint += new System.Windows.Forms.PaintEventHandler(this.Group_BaoCao_Paint);
             // 
             // Btn_THNX
             // 
@@ -264,6 +265,7 @@
             this.Btn_TaoLogin.Size = new System.Drawing.Size(94, 84);
             this.Btn_TaoLogin.TabIndex = 1;
             this.Btn_TaoLogin.Text = "Tạo Login";
+            this.Btn_TaoLogin.Click += new System.EventHandler(this.Btn_TaoLogin_Click);
             // 
             // Btn_NhanVien
             // 

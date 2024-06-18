@@ -22,7 +22,7 @@ namespace Quan_Ly_Vat_Tu
         public static SqlConnection connection = new SqlConnection();
 
         public static String connection_string = "";
-        public static String database = "QLVT_DATHANG";
+        public static String database = "QLVT";
         public static String server_name = "";
         public static String main_server = "";
         public static String server_1 = "";
