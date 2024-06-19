@@ -44,6 +44,7 @@ namespace Quan_Ly_Vat_Tu
             }
             else
             {
+                if (Program.main_group == "USER") Btn_TaoLogin.Enabled = false;
                 Cmb_ChiNhanh.Enabled = false;
             }
 
