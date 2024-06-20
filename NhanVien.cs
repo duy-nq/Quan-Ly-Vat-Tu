@@ -21,6 +21,9 @@ namespace Quan_Ly_Vat_Tu
         int vitri = 0;
         bool dangThem = false;
 
+        public static String manv = "";
+        public static bool trangThaiXoa;
+
         public NhanVien()
         {
             InitializeComponent();
@@ -51,14 +54,14 @@ namespace Quan_Ly_Vat_Tu
             if (Program.main_group == "CONGTY")
             {
                 Cmb_ChiNhanh.Enabled = true;
-                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
+                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = Btn_ChuyenChiNhanh.Enabled = false;
                 Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
                 Gc_NhanVien.Enabled = true;
                 Panel_NhapLieu.Enabled = false;
             } else
             {
                 Cmb_ChiNhanh.Enabled = false;
-                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = true;
+                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_ChuyenChiNhanh.Enabled = true;
                 Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
                 Btn_PhucHoi.Enabled = Panel_NhapLieu.Enabled = false;
                 Gc_NhanVien.Enabled = true; 
@@ -293,59 +296,29 @@ namespace Quan_Ly_Vat_Tu
             }
         }
 
-        private void nGAYSINHDateEdit_EditValueChanged(object sender, EventArgs e)
+        private void Btn_ChuyenChiNhanh_Click(object sender, EventArgs e)
         {
+            manv = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["MANV"].ToString();
+            //trangThaiXoa = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"];
+            Console.WriteLine(((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"]);
 
+            Form f = this.CheckExists(typeof(FormChuyenChiNhanh));
+            if (f != null) { f.Activate(); }
+            else
+            {
+                FormChuyenChiNhanh frm = new FormChuyenChiNhanh();
+                frm.ShowDialog();
+            }
         }
 
-        private void nGAYSINHLabel_Click(object sender, EventArgs e)
+        private Form CheckExists(Type ftype)
         {
-
-        }
-
-        private void trangThaiXoaCheckEdit_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trangThaiXoaLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Gc_NhanVien_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Panel_NhapLieu_Paint(object sender, PaintEventArgs e)
-        {
-                
-        }
-
-        private void nhanVienGridControl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trangThaiXoaCheckEdit_CheckedChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nGAYSINHDateEdit_EditValueChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Bds_PhieuNhap_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DATHANGBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
+            foreach (Form f in this.MdiChildren)
+                if (f.GetType() == ftype)
+                {
+                    return f;
+                }
+            return null;
         }
     }
 }

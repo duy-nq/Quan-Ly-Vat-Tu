@@ -39,6 +39,7 @@
             System.Windows.Forms.Label lUONGLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanVien));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.Btn_ChuyenChiNhanh = new DevExpress.XtraEditors.SimpleButton();
             this.Cmb_ChiNhanh = new DevExpress.XtraEditors.ComboBoxEdit();
             this.Label_ChiNhanh = new DevExpress.XtraEditors.LabelControl();
             this.Panel_NhapLieu = new DevExpress.XtraEditors.PanelControl();
@@ -76,12 +77,6 @@
             this.tableAdapterManager = new Quan_Ly_Vat_Tu.DSTableAdapters.TableAdapterManager();
             this.Gc_NhanVien = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Bds_PhieuXuat = new System.Windows.Forms.BindingSource(this.components);
-            this.PHIEUXUATTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.PhieuXuatTableAdapter();
-            this.Bds_PhieuNhap = new System.Windows.Forms.BindingSource(this.components);
-            this.PHIEUNHAPTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.PhieuNhapTableAdapter();
-            this.Bds_DatHang = new System.Windows.Forms.BindingSource(this.components);
-            this.DATHANGTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.DatHangTableAdapter();
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -91,6 +86,12 @@
             this.colLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTrangThaiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Bds_PhieuXuat = new System.Windows.Forms.BindingSource(this.components);
+            this.PHIEUXUATTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.PhieuXuatTableAdapter();
+            this.Bds_PhieuNhap = new System.Windows.Forms.BindingSource(this.components);
+            this.PHIEUNHAPTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.PhieuNhapTableAdapter();
+            this.Bds_DatHang = new System.Windows.Forms.BindingSource(this.components);
+            this.DATHANGTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.DatHangTableAdapter();
             mANVLabel = new System.Windows.Forms.Label();
             nGAYSINHLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
@@ -206,6 +207,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.Btn_ChuyenChiNhanh);
             this.panelControl1.Controls.Add(this.Cmb_ChiNhanh);
             this.panelControl1.Controls.Add(this.Label_ChiNhanh);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -213,6 +215,17 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1940, 100);
             this.panelControl1.TabIndex = 4;
+            // 
+            // Btn_ChuyenChiNhanh
+            // 
+            this.Btn_ChuyenChiNhanh.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.Btn_ChuyenChiNhanh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_ChuyenChiNhanh.ImageOptions.SvgImage")));
+            this.Btn_ChuyenChiNhanh.Location = new System.Drawing.Point(1357, 16);
+            this.Btn_ChuyenChiNhanh.Name = "Btn_ChuyenChiNhanh";
+            this.Btn_ChuyenChiNhanh.Size = new System.Drawing.Size(193, 69);
+            this.Btn_ChuyenChiNhanh.TabIndex = 2;
+            this.Btn_ChuyenChiNhanh.Text = "Chuyển chi nhánh";
+            this.Btn_ChuyenChiNhanh.Click += new System.EventHandler(this.Btn_ChuyenChiNhanh_Click);
             // 
             // Cmb_ChiNhanh
             // 
@@ -260,7 +273,6 @@
             this.Panel_NhapLieu.Name = "Panel_NhapLieu";
             this.Panel_NhapLieu.Size = new System.Drawing.Size(1940, 816);
             this.Panel_NhapLieu.TabIndex = 10;
-            this.Panel_NhapLieu.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_NhapLieu_Paint);
             // 
             // Txt_Luong
             // 
@@ -501,7 +513,6 @@
             this.trangThaiXoaCheckEdit.Properties.Caption = "";
             this.trangThaiXoaCheckEdit.Size = new System.Drawing.Size(94, 24);
             this.trangThaiXoaCheckEdit.TabIndex = 15;
-            this.trangThaiXoaCheckEdit.CheckedChanged += new System.EventHandler(this.trangThaiXoaCheckEdit_CheckedChanged_1);
             // 
             // Txt_MaCN
             // 
@@ -573,7 +584,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.Date_NgaySinh.Size = new System.Drawing.Size(125, 28);
             this.Date_NgaySinh.TabIndex = 3;
-            this.Date_NgaySinh.EditValueChanged += new System.EventHandler(this.nGAYSINHDateEdit_EditValueChanged_1);
             // 
             // Txt_MaNV
             // 
@@ -615,7 +625,6 @@
             this.Gc_NhanVien.TabIndex = 18;
             this.Gc_NhanVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.Gc_NhanVien.Click += new System.EventHandler(this.nhanVienGridControl_Click);
             // 
             // gridView1
             // 
@@ -631,34 +640,6 @@
             this.colTrangThaiXoa});
             this.gridView1.GridControl = this.Gc_NhanVien;
             this.gridView1.Name = "gridView1";
-            // 
-            // Bds_PhieuXuat
-            // 
-            this.Bds_PhieuXuat.DataMember = "FK_PX_NhanVien";
-            this.Bds_PhieuXuat.DataSource = this.Bds_NhanVien;
-            // 
-            // PHIEUXUATTableAdapter
-            // 
-            this.PHIEUXUATTableAdapter.ClearBeforeFill = true;
-            // 
-            // Bds_PhieuNhap
-            // 
-            this.Bds_PhieuNhap.DataMember = "FK_PhieuNhap_NhanVien";
-            this.Bds_PhieuNhap.DataSource = this.Bds_NhanVien;
-            // 
-            // PHIEUNHAPTableAdapter
-            // 
-            this.PHIEUNHAPTableAdapter.ClearBeforeFill = true;
-            // 
-            // Bds_DatHang
-            // 
-            this.Bds_DatHang.DataMember = "FK_DatHang_NhanVien";
-            this.Bds_DatHang.DataSource = this.Bds_NhanVien;
-            this.Bds_DatHang.CurrentChanged += new System.EventHandler(this.DATHANGBindingSource_CurrentChanged);
-            // 
-            // DATHANGTableAdapter
-            // 
-            this.DATHANGTableAdapter.ClearBeforeFill = true;
             // 
             // colMANV
             // 
@@ -740,6 +721,33 @@
             this.colTrangThaiXoa.Visible = true;
             this.colTrangThaiXoa.VisibleIndex = 8;
             this.colTrangThaiXoa.Width = 94;
+            // 
+            // Bds_PhieuXuat
+            // 
+            this.Bds_PhieuXuat.DataMember = "FK_PX_NhanVien";
+            this.Bds_PhieuXuat.DataSource = this.Bds_NhanVien;
+            // 
+            // PHIEUXUATTableAdapter
+            // 
+            this.PHIEUXUATTableAdapter.ClearBeforeFill = true;
+            // 
+            // Bds_PhieuNhap
+            // 
+            this.Bds_PhieuNhap.DataMember = "FK_PhieuNhap_NhanVien";
+            this.Bds_PhieuNhap.DataSource = this.Bds_NhanVien;
+            // 
+            // PHIEUNHAPTableAdapter
+            // 
+            this.PHIEUNHAPTableAdapter.ClearBeforeFill = true;
+            // 
+            // Bds_DatHang
+            // 
+            this.Bds_DatHang.DataMember = "FK_DatHang_NhanVien";
+            this.Bds_DatHang.DataSource = this.Bds_NhanVien;
+            // 
+            // DATHANGTableAdapter
+            // 
+            this.DATHANGTableAdapter.ClearBeforeFill = true;
             // 
             // NhanVien
             // 
@@ -848,5 +856,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colLUONG;
         private DevExpress.XtraGrid.Columns.GridColumn colMACN;
         private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiXoa;
+        private DevExpress.XtraEditors.SimpleButton Btn_ChuyenChiNhanh;
     }
 }
