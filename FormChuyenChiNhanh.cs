@@ -24,6 +24,8 @@ namespace Quan_Ly_Vat_Tu
         {
             Txt_ChiNhanhHienTai.Text = Program.DT_ChiNhanh.Rows[Program.main_chinhanh]["TenCN"].ToString();
             Txt_ChiNhanhHienTai.Enabled = false;
+            Txt_MaNV.Text = NhanVien.manv;
+            Txt_MaNV.Enabled = false;
 
             foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
             {
@@ -44,11 +46,11 @@ namespace Quan_Ly_Vat_Tu
                 return;
             }
 
-            //if (NhanVien.trangThaiXoa == 1)
-            //{
-            //    MessageBox.Show("Nhân viên này không tồn tại ở chi nhánh hiện tại", "Thông báo", MessageBoxButtons.OK);
-            //    return;
-            //}
+            if (NhanVien.trangThaiXoa == "True")
+            {
+                MessageBox.Show("Nhân viên này không tồn tại ở chi nhánh hiện tại", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
 
             string chiNhanhDuocChon = Cmb_ChiNhanh.Properties.Items[Cmb_ChiNhanh.SelectedIndex].ToString();
             if (chiNhanhDuocChon.Contains("1"))

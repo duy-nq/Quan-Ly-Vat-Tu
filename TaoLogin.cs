@@ -118,6 +118,12 @@ namespace Quan_Ly_Vat_Tu
                 return;
             }
 
+            if (((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"].ToString() == "True")
+            {
+                MessageBox.Show("Nhân viên này không tồn tại ở chi nhánh hiện tại", "", MessageBoxButtons.OK);
+                return;
+            }
+
             if (Program.connection.State == ConnectionState.Closed)
             {
                 Program.connection.Open();
@@ -143,6 +149,12 @@ namespace Quan_Ly_Vat_Tu
         private void Btn_TaoLogin_Click(object sender, EventArgs e)
         {
             manv = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["MANV"].ToString();
+
+            if (((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"].ToString() == "True")
+            {
+                MessageBox.Show("Nhân viên này không tồn tại ở chi nhánh hiện tại", "", MessageBoxButtons.OK);
+                return;
+            }
 
             Form f = this.CheckExists(typeof(FormTaoLogin));
             if (f != null) { f.Activate(); }

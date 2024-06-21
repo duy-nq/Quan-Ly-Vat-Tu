@@ -22,7 +22,7 @@ namespace Quan_Ly_Vat_Tu
         bool dangThem = false;
 
         public static String manv = "";
-        public static bool trangThaiXoa;
+        public static String trangThaiXoa;
 
         public NhanVien()
         {
@@ -299,8 +299,7 @@ namespace Quan_Ly_Vat_Tu
         private void Btn_ChuyenChiNhanh_Click(object sender, EventArgs e)
         {
             manv = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["MANV"].ToString();
-            //trangThaiXoa = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"];
-            Console.WriteLine(((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"]);
+            trangThaiXoa = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"].ToString();
 
             Form f = this.CheckExists(typeof(FormChuyenChiNhanh));
             if (f != null) { f.Activate(); }
