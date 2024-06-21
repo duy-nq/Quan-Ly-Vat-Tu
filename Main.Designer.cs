@@ -222,6 +222,7 @@
             this.Btn_DDH.Size = new System.Drawing.Size(94, 84);
             this.Btn_DDH.TabIndex = 5;
             this.Btn_DDH.Text = "Đơn Đặt Hàng";
+            this.Btn_DDH.Click += new System.EventHandler(this.Btn_DDH_Click);
             // 
             // Btn_PhieuXuat
             // 

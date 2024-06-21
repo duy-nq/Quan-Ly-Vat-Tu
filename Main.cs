@@ -118,6 +118,18 @@ namespace Quan_Ly_Vat_Tu
 
         }
 
+        private void Btn_DDH_Click(object sender, EventArgs e)
+        {
+            Form f = this.CheckExists(typeof(DonDatHang));
+            if (f != null) { f.Activate(); }
+            else
+            {
+                DonDatHang frm = new DonDatHang();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
