@@ -16,7 +16,6 @@ namespace Quan_Ly_Vat_Tu
     public partial class TaoLogin : DevExpress.XtraEditors.XtraForm
     {
         public static String manv = "";
-        String macn = "";
 
         public TaoLogin()
         {
@@ -26,9 +25,7 @@ namespace Quan_Ly_Vat_Tu
         private void TaoLogin_Load(object sender, EventArgs e)
         {
             this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
-            this.NHANVIENTableAdapter.Fill(this.DS.NhanVien);
-
-            macn = ((DataRowView)Bds_NhanVien[0])["MACN"].ToString();
+            this.NHANVIENTableAdapter.Fill(this.DS.View_NhanVienChuaCoLoginName);
 
             foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
             {
@@ -48,17 +45,7 @@ namespace Quan_Ly_Vat_Tu
                 Cmb_ChiNhanh.Enabled = false;
             }
 
-            Txt_MaNV.Enabled = Txt_Ho.Enabled = Txt_Ten.Enabled = Txt_MaCN.Enabled = trangThaiXoaCheckEdit.Enabled = false;
-        }
-
-
-
-        private void nhanVienBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.Bds_NhanVien.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.DS);
-
+            Txt_MaNV.Enabled = Txt_Ho.Enabled = Txt_Ten.Enabled = Txt_MaCN.Enabled = false;
         }
 
         private void Cmb_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,17 +71,15 @@ namespace Quan_Ly_Vat_Tu
             else
             {
                 this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
-                this.NHANVIENTableAdapter.Fill(this.DS.NhanVien);
-
-                macn = ((DataRowView)Bds_NhanVien[0])["MACN"].ToString();
+                this.NHANVIENTableAdapter.Fill(this.DS.View_NhanVienChuaCoLoginName);
             }
         }
 
-        private void Btn_DangXuat_Click(object sender, EventArgs e)
+        private void Btn_LamMoi_Click(object sender, EventArgs e)
         {
             try
             {
-                this.NHANVIENTableAdapter.Fill(this.DS.NhanVien);
+                this.NHANVIENTableAdapter.Fill(this.DS.View_NhanVienChuaCoLoginName);
             }
             catch (Exception ex)
             {
@@ -108,46 +93,14 @@ namespace Quan_Ly_Vat_Tu
             this.Close();
         }
 
-        private void Btn_KiemTraLogin_Click(object sender, EventArgs e)
-        {
-            manv = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["MANV"].ToString();
-
-            if (manv == Program.main_maNV)
-            {
-                MessageBox.Show("Bạn đang truy cập vào hệ thống với tài khoản login của nhân viên này", "", MessageBoxButtons.OK);
-                return;
-            }
-
-            if (((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"].ToString() == "True")
-            {
-                MessageBox.Show("Nhân viên này không tồn tại ở chi nhánh hiện tại", "", MessageBoxButtons.OK);
-                return;
-            }
-
-            if (Program.connection.State == ConnectionState.Closed)
-            {
-                Program.connection.Open();
-            }
-
-            String Sql_Query = "EXEC SP_KiemTraUsername '" + manv + "'";
-            SqlDataReader reader = Program.ExecSqlDataReader(Sql_Query);
-
-            if (reader.HasRows && reader.Read() && reader["UserExists"].ToString() == "True")
-            {
-                MessageBox.Show("Nhân viên này đã có tài khoản login", "", MessageBoxButtons.OK);
-                reader.Close();
-                return;
-            }
-            else
-            {
-                MessageBox.Show("Nhân viên này chưa có tài khoản login", "", MessageBoxButtons.OK);
-                reader.Close();
-                return;
-            }
-        }
-
         private void Btn_TaoLogin_Click(object sender, EventArgs e)
         {
+            if (Bds_NhanVien.Count == 0)
+            {
+                MessageBox.Show("Không còn nhân viên chưa có login name", "", MessageBoxButtons.OK);
+                return;
+            }
+
             manv = ((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["MANV"].ToString();
 
             if (((DataRowView)Bds_NhanVien[Bds_NhanVien.Position])["TrangThaiXoa"].ToString() == "True")
