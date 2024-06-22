@@ -97,26 +97,16 @@ namespace Quan_Ly_Vat_Tu
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            this.XoaForm();
+            Hide();
 
-            Form f = this.IsActive(typeof(DangNhap), Application.OpenForms);
-            if (f != null)
-            {
-                f.Activate();
+            Program.connection.Close();
 
-                Program.username = Program.username_DN = "";
-                Program.password = Program.password_DN = "";
+            Program.username = Program.username_DN = "";
+            Program.password = Program.password_DN = "";
 
-                f.Show();
-            }
-            else
-            {
-                DangNhap frm = new DangNhap();
-                //frm.MdiParent = this;
-                frm.Show();
-            }
+            DangNhap loginForm = new DangNhap();
 
-
+            loginForm.ShowDialog();
         }
 
         private void Btn_DDH_Click(object sender, EventArgs e)

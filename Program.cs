@@ -22,7 +22,7 @@ namespace Quan_Ly_Vat_Tu
         public static SqlConnection connection = new SqlConnection();
 
         public static String connection_string = "";
-        public static String database = "QLVT";
+        public static String database = "QLVT_DATHANG";
         public static String server_name = "";
         public static String remote_server_name = "";
         public static String main_server = "LAPTOP-S1E2VVUK";
@@ -133,20 +133,20 @@ namespace Quan_Ly_Vat_Tu
             return "ERR-NOT-FOUND";
         }
 
-        static void LoadEnvVariables()
-        {
-            DotEnv.Load();
+        //static void LoadEnvVariables()
+        //{
+            //DotEnv.Load();
 
-            Program.main_server = Environment.GetEnvironmentVariable("MAIN_SERVER");
-            Program.server_1 = Environment.GetEnvironmentVariable("SERVER_1");
-            Program.server_2 = Environment.GetEnvironmentVariable("SERVER_2");
-            Program.server_3 = Environment.GetEnvironmentVariable("SERVER_3");
-        }
+            //Program.main_server = Environment.GetEnvironmentVariable("MAIN_SERVER");
+            //Program.server_1 = Environment.GetEnvironmentVariable("SERVER_1");
+            //Program.server_2 = Environment.GetEnvironmentVariable("SERVER_2");
+            //Program.server_3 = Environment.GetEnvironmentVariable("SERVER_3");
+        //}
 
         [STAThread]
         static void Main()
         {
-            LoadEnvVariables();
+            //LoadEnvVariables();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DangNhap());

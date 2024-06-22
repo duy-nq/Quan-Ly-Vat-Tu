@@ -34,7 +34,7 @@ namespace Quan_Ly_Vat_Tu
 
         public void Load_ChiNhanh()
         {
-            string Sql_Query = "SELECT TOP 2 * FROM QLVT.dbo.View_DSPM";
+            string Sql_Query = "SELECT TOP 2 * FROM QLVT_DATHANG.dbo.View_DSPM";
             
             if (Program.connection.State == ConnectionState.Closed)
             {
@@ -92,7 +92,7 @@ namespace Quan_Ly_Vat_Tu
 
             if (Program.KetNoi() == 1)
             {
-                string sql_query = "EXEC QLVT.dbo.SP_DANGNHAP '" + Program.username + "'";
+                string sql_query = "EXEC QLVT_DATHANG.dbo.SP_DANGNHAP '" + Program.username + "'";
 
                 SqlCommand command = new SqlCommand(sql_query, Program.connection);
 
