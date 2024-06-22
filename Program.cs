@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
+using dotenv.net;
+
 
 namespace Quan_Ly_Vat_Tu
 {
@@ -20,7 +22,7 @@ namespace Quan_Ly_Vat_Tu
         public static SqlConnection connection = new SqlConnection();
 
         public static String connection_string = "";
-        public static String database = "QLVT_DATHANG";
+        public static String database = "QLVT";
         public static String server_name = "";
         public static String remote_server_name = "";
         public static String main_server = "LAPTOP-S1E2VVUK";
@@ -37,6 +39,7 @@ namespace Quan_Ly_Vat_Tu
         public static String username_DN;
         public static String password_DN;
 
+        public static int main_chinhanh;
         public static String main_group;
         public static String main_hoTen;
         public static String main_maNV;
@@ -71,7 +74,7 @@ namespace Quan_Ly_Vat_Tu
             
             try
             {
-                Program.connection_string = "Data Source=" + Program.server_name + ";Initial Catalog=" + Program.database + ";User ID=" +
+                Program.connection_string = "Data Source=" + Program.main_server + ";Initial Catalog=" + Program.database + ";User ID=" +
                       default_login + ";password=" + default_password;
                 Program.connection.ConnectionString = Program.connection_string;
                 Program.connection.Open();
@@ -93,6 +96,30 @@ namespace Quan_Ly_Vat_Tu
             return table;
         }
 
+        public static SqlDataReader ExecSqlDataReader(String cmd)
+        {
+            SqlDataReader myreader;
+
+            // SqlCommand sqlcmd = new SqlCommand(cmd, Program conn);
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Program.connection;
+            sqlcmd.CommandText = cmd;
+            sqlcmd.CommandType = CommandType.Text;
+
+            if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+            try
+            {
+                myreader = sqlcmd.ExecuteReader();
+                return myreader;
+            }
+            catch (SqlException ex)
+            {
+                Program.connection.Close();
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
         public static String Get_ServerName(string tenCN)
         {
             foreach (DataRow dr in DT_ChiNhanh.Rows)
@@ -106,14 +133,24 @@ namespace Quan_Ly_Vat_Tu
             return "ERR-NOT-FOUND";
         }
 
+        static void LoadEnvVariables()
+        {
+            DotEnv.Load();
 
+            Program.main_server = Environment.GetEnvironmentVariable("MAIN_SERVER");
+            Program.server_1 = Environment.GetEnvironmentVariable("SERVER_1");
+            Program.server_2 = Environment.GetEnvironmentVariable("SERVER_2");
+            Program.server_3 = Environment.GetEnvironmentVariable("SERVER_3");
+        }
 
         [STAThread]
         static void Main()
         {
+            LoadEnvVariables();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DangNhap());
         }
     }
 }
+    

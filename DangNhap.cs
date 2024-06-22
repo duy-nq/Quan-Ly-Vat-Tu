@@ -14,28 +14,38 @@ using System.Windows.Forms;
 namespace Quan_Ly_Vat_Tu
 {
     public partial class DangNhap : DevExpress.XtraEditors.XtraForm
-    {               
+    {
         public DangNhap()
         {
-            InitializeComponent();
-
-            if (Program.KetNoi_MainServer() == 1)
+            try
             {
-                Load_ChiNhanh();
+                InitializeComponent();
+                if (Program.KetNoi_MainServer() == 1)
+                {
+                    Load_ChiNhanh();
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Lỗi khi khởi tạo form Đăng Nhập: " + ex.Message);
+                Console.WriteLine(ex);
             }
         }
 
         public void Load_ChiNhanh()
         {
-            string Sql_Query = "SELECT TOP 2 * FROM QLVT_DATHANG.dbo.View_DSPM";
+            string Sql_Query = "SELECT TOP 2 * FROM QLVT.dbo.View_DSPM";
             
             if (Program.connection.State == ConnectionState.Closed)
             {
                 Program.connection.Open();
             }
-            
-            SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
-            da.Fill(Program.DT_ChiNhanh);
+
+            if (Program.DT_ChiNhanh.Rows.Count == 0)
+            {
+                SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
+                da.Fill(Program.DT_ChiNhanh);
+            }
 
             foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
             {
@@ -49,17 +59,6 @@ namespace Quan_Ly_Vat_Tu
         private void Cmb_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.server_name = Program.Get_ServerName(Cmb_ChiNhanh.Text);
-            Console.WriteLine(Program.server_name);
-        }
-
-        private void Txt_Username_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txt_MatKhau_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private new Form IsActive(Type ftype, FormCollection forms)
@@ -73,7 +72,7 @@ namespace Quan_Ly_Vat_Tu
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (Txt_MatKhau.Text == "" || Txt_Username.Text == "")
+            if (Txt_MatKhau.Text.Trim() == "" || Txt_Username.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
                 return;
@@ -84,6 +83,7 @@ namespace Quan_Ly_Vat_Tu
 
             Program.username_DN = Program.username;
             Program.password_DN = Program.password;
+            Program.main_chinhanh = Cmb_ChiNhanh.SelectedIndex;
 
             if (Program.server_name == null)
             {
@@ -92,7 +92,7 @@ namespace Quan_Ly_Vat_Tu
 
             if (Program.KetNoi() == 1)
             {
-                string sql_query = "EXEC QLVT_DATHANG.dbo.SP_DANGNHAP '" + Program.username + "'";
+                string sql_query = "EXEC QLVT.dbo.SP_DANGNHAP '" + Program.username + "'";
 
                 SqlCommand command = new SqlCommand(sql_query, Program.connection);
 
@@ -109,10 +109,13 @@ namespace Quan_Ly_Vat_Tu
                             Program.main_maNV = reader.GetString(0);
                         }
                     }
+
+                    reader.Close();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    MessageBox.Show("Không tìm thấy thông tin tài khoản\n" + ex.Message, "", MessageBoxButtons.OK);
+                    return;
                 }
                 finally
                 {
@@ -123,13 +126,25 @@ namespace Quan_Ly_Vat_Tu
             else return;
 
             Hide();
+            Txt_Username.Text = Txt_MatKhau.Text = "";
 
             Form form = IsActive(typeof(Main), Application.OpenForms);
             form?.Close();
             Main mf = new Main();
+            mf.HienThiMenu();
             mf.ShowDialog();
 
             Close();
+        }
+
+        private void Txt_Username_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txt_MatKhau_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
