@@ -239,6 +239,7 @@
             this.Btn_PhieuXuat.Size = new System.Drawing.Size(94, 84);
             this.Btn_PhieuXuat.TabIndex = 4;
             this.Btn_PhieuXuat.Text = "Phiếu Xuất";
+            this.Btn_PhieuXuat.Click += new System.EventHandler(this.Btn_PhieuXuat_Click);
             // 
             // Btn_PhieuNhap
             // 

@@ -232,5 +232,19 @@ namespace Quan_Ly_Vat_Tu
             }
             else form.Activate();
         }
+
+        private void Btn_PhieuXuat_Click(object sender, EventArgs e)
+        {
+            Form form = isActive(typeof(PhieuXuat));
+            if (form == null)
+            {
+                PhieuXuat fnv = new PhieuXuat
+                {
+                    MdiParent = this
+                };
+                fnv.Show();
+            }
+            else form.Activate();
+        }
     }
 }
