@@ -47,7 +47,7 @@
             // 
             this.Cmb_LoaiPhieu.Location = new System.Drawing.Point(63, 145);
             this.Cmb_LoaiPhieu.Name = "Cmb_LoaiPhieu";
-            this.Cmb_LoaiPhieu.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.False;
+            this.Cmb_LoaiPhieu.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.True;
             this.Cmb_LoaiPhieu.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cmb_LoaiPhieu.Properties.Appearance.Options.UseFont = true;
             this.Cmb_LoaiPhieu.Properties.AutoHeight = false;
@@ -58,6 +58,7 @@
             "Phiếu nhập",
             "Phiếu xuất"});
             this.Cmb_LoaiPhieu.Properties.Tag = true;
+            this.Cmb_LoaiPhieu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.Cmb_LoaiPhieu.Size = new System.Drawing.Size(212, 37);
             this.Cmb_LoaiPhieu.TabIndex = 44;
             // 

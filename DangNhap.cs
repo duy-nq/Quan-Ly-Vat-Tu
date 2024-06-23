@@ -70,26 +70,8 @@ namespace Quan_Ly_Vat_Tu
             return null;
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void GetInfo()
         {
-            if (Txt_MatKhau.Text.Trim() == "" || Txt_Username.Text.Trim() == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
-                return;
-            }
-
-            Program.username = Txt_Username.Text;
-            Program.password = Txt_MatKhau.Text;
-
-            Program.username_DN = Program.username;
-            Program.password_DN = Program.password;
-            Program.main_chinhanh = Cmb_ChiNhanh.SelectedIndex;
-
-            if (Program.server_name == null)
-            {
-                Program.server_name = Program.Get_ServerName(Cmb_ChiNhanh.Text);
-            }
-
             if (Program.KetNoi() == 1)
             {
                 string sql_query = "EXEC QLVT_DATHANG.dbo.SP_DANGNHAP '" + Program.username + "'";
@@ -124,6 +106,30 @@ namespace Quan_Ly_Vat_Tu
 
             }
             else return;
+        }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            if (Txt_MatKhau.Text.Trim() == "" || Txt_Username.Text.Trim() == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                return;
+            }
+
+            Program.username = Txt_Username.Text;
+            Program.password = Txt_MatKhau.Text;
+
+            Program.username_DN = Program.username;
+            Program.password_DN = Program.password;
+
+            Program.main_chinhanh = Cmb_ChiNhanh.SelectedIndex;
+
+            if (Program.server_name == null)
+            {
+                Program.server_name = Program.Get_ServerName(Cmb_ChiNhanh.Text);
+            }
+
+            GetInfo();
 
             Hide();
             Txt_Username.Text = Txt_MatKhau.Text = "";
