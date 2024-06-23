@@ -9,7 +9,7 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
 using dotenv.net;
-
+using DevExpress.XtraEditors;
 
 namespace Quan_Ly_Vat_Tu
 {
@@ -118,6 +118,33 @@ namespace Quan_Ly_Vat_Tu
                 MessageBox.Show(ex.Message);
                 return null;
             }
+        }
+
+        public static void ConfigToRemoteServer(ComboBoxEdit cmb)
+        {
+            if (cmb.Text.ToString() == "System.Data.DataRowView") return;
+            server_name = Get_ServerName(cmb.Text);
+
+            if (cmb.SelectedIndex != main_chinhanh)
+            {
+                username = remote_username;
+                password = remote_password;
+            }
+            else
+            {
+                username = username_DN;
+                password = password_DN;
+            }
+        }
+
+        public static void LoadChiNhanh(ComboBoxEdit cmb)
+        {
+            foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
+            {
+                cmb.Properties.Items.Add(dr["TenCN"]);
+            }
+
+            cmb.SelectedIndex = Program.main_chinhanh;
         }
 
         public static String Get_ServerName(string tenCN)

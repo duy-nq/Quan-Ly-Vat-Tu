@@ -152,5 +152,10 @@ namespace Quan_Ly_Vat_Tu
         {
 
         }
+
+        private void DangNhap_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

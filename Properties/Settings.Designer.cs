@@ -12,7 +12,7 @@ namespace Quan_Ly_Vat_Tu.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -37,11 +37,22 @@ namespace Quan_Ly_Vat_Tu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KQ\\SERVER1;Initial Catalog=QLVT;User ID=sa;TrustServerCertificate=Tru" +
-            "e")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-S1E2VVUK;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123;" +
+            "TrustServerCertificate=True")]
         public string QLVTConnectionString2 {
             get {
                 return ((string)(this["QLVTConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-S1E2VVUK;Initial Catalog=QLVT_DATHANG;User ID=HTKN;Password=12" +
+            "3")]
+        public string QLVT_DATHANGConnectionString1 {
+            get {
+                return ((string)(this["QLVT_DATHANGConnectionString1"]));
             }
         }
     }

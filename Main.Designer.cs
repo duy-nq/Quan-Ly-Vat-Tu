@@ -249,6 +249,7 @@
             this.Btn_PhieuNhap.Size = new System.Drawing.Size(94, 84);
             this.Btn_PhieuNhap.TabIndex = 2;
             this.Btn_PhieuNhap.Text = "Phiếu Nhập";
+            this.Btn_PhieuNhap.Click += new System.EventHandler(this.Btn_PhieuNhap_Click);
             // 
             // groupQuanLy
             // 

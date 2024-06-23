@@ -218,5 +218,19 @@ namespace Quan_Ly_Vat_Tu
             }
             else form.Activate();
         }
+
+        private void Btn_PhieuNhap_Click(object sender, EventArgs e)
+        {
+            Form form = isActive(typeof(PhieuNhap));
+            if (form == null)
+            {
+                PhieuNhap fnv = new PhieuNhap
+                {
+                    MdiParent = this
+                };
+                fnv.Show();
+            }
+            else form.Activate();
+        }
     }
 }
