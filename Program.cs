@@ -45,6 +45,7 @@ namespace Quan_Ly_Vat_Tu
         public static String main_maNV;
 
         public static DataTable DT_ChiNhanh = new DataTable();
+        public static DataTable DT_DSVT = new DataTable();
 
         public static int KetNoi()
         {
@@ -147,6 +148,42 @@ namespace Quan_Ly_Vat_Tu
             cmb.SelectedIndex = Program.main_chinhanh;
         }
 
+        public static void LoadVatTu(ComboBoxEdit cmb)
+        {
+            DT_DSVT.Clear();
+            cmb.Properties.Items.Clear();
+
+            cmb.Properties.Items.Add("-Lựa chọn vật tư-");
+
+            string Sql_Query = "SELECT * FROM QLVT_DATHANG.dbo.View_DSVT";
+
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            if (DT_DSVT.Rows.Count == 0)
+            {
+                SqlDataAdapter da = new SqlDataAdapter(Sql_Query, connection);
+                da.Fill(DT_DSVT);
+            }
+
+            foreach (DataRow dr in DT_DSVT.Rows)
+            {
+                cmb.Properties.Items.Add(dr["TENVT"]);
+            }
+
+            cmb.SelectedIndex = 0;
+            try
+            {
+                cmb.SelectedIndex = 1;
+            }
+            finally
+            {
+                cmb.SelectedIndex = 0;
+            }
+        }
+
         public static String Get_ServerName(string tenCN)
         {
             foreach (DataRow dr in DT_ChiNhanh.Rows)
@@ -160,14 +197,42 @@ namespace Quan_Ly_Vat_Tu
             return "ERR-NOT-FOUND";
         }
 
+        public static bool CanBeDelete(BindingSource parent)
+        {
+            if (parent.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xóa!");
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool CanBeDelete(BindingSource parent, BindingSource child)
+        {
+            if (parent.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xóa!");
+                return false;
+            }
+
+            if (child.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa vì đã có " + child.Count + " dữ liệu phụ thuộc!");
+                return false;
+            }
+
+            return true;
+        }
+
         //static void LoadEnvVariables()
         //{
-            //DotEnv.Load();
+        //DotEnv.Load();
 
-            //Program.main_server = Environment.GetEnvironmentVariable("MAIN_SERVER");
-            //Program.server_1 = Environment.GetEnvironmentVariable("SERVER_1");
-            //Program.server_2 = Environment.GetEnvironmentVariable("SERVER_2");
-            //Program.server_3 = Environment.GetEnvironmentVariable("SERVER_3");
+        //Program.main_server = Environment.GetEnvironmentVariable("MAIN_SERVER");
+        //Program.server_1 = Environment.GetEnvironmentVariable("SERVER_1");
+        //Program.server_2 = Environment.GetEnvironmentVariable("SERVER_2");
+        //Program.server_3 = Environment.GetEnvironmentVariable("SERVER_3");
         //}
 
         [STAThread]

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhieuXuat));
             System.Windows.Forms.Label mAPXLabel;
             System.Windows.Forms.Label nGAYLabel;
             System.Windows.Forms.Label hOTENKHLabel;
@@ -38,12 +37,13 @@
             System.Windows.Forms.Label mAVTLabel;
             System.Windows.Forms.Label sOLUONGLabel;
             System.Windows.Forms.Label dONGIALabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhieuXuat));
             this.dS = new Quan_Ly_Vat_Tu.DS();
             this.phieuXuatBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phieuXuatTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.PhieuXuatTableAdapter();
             this.tableAdapterManager = new Quan_Ly_Vat_Tu.DSTableAdapters.TableAdapterManager();
-            this.cTPXBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTPXTableAdapter = new Quan_Ly_Vat_Tu.DSTableAdapters.CTPXTableAdapter();
+            this.cTPXBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupAction = new DevExpress.XtraEditors.GroupControl();
             this.Cmb_ChiNhanh = new DevExpress.XtraEditors.ComboBoxEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -67,16 +67,16 @@
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.Txt_MaNV = new DevExpress.XtraEditors.TextEdit();
+            this.Txt_MaKho = new DevExpress.XtraEditors.TextEdit();
+            this.Txt_TenKH = new DevExpress.XtraEditors.TextEdit();
+            this.DE_PhieuXuat = new DevExpress.XtraEditors.DateEdit();
+            this.Txt_MaPX = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.mAPXTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.nGAYDateEdit = new DevExpress.XtraEditors.DateEdit();
-            this.hOTENKHTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.mAKHOTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.mANVTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.mAVTTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.sOLUONGTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.dONGIATextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Cmb_VatTu = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.Txt_DonGia = new DevExpress.XtraEditors.TextEdit();
+            this.Txt_SoLuong = new DevExpress.XtraEditors.TextEdit();
+            this.Txt_MaVT = new DevExpress.XtraEditors.TextEdit();
             mAPXLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             hOTENKHLabel = new System.Windows.Forms.Label();
@@ -99,19 +99,99 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaNV.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaKho.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_TenKH.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DE_PhieuXuat.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DE_PhieuXuat.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaPX.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mAPXTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nGAYDateEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nGAYDateEdit.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hOTENKHTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mAKHOTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mANVTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mAVTTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sOLUONGTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dONGIATextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cmb_VatTu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_DonGia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_SoLuong.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaVT.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mAPXLabel
+            // 
+            mAPXLabel.AutoSize = true;
+            mAPXLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mAPXLabel.Location = new System.Drawing.Point(12, 94);
+            mAPXLabel.Name = "mAPXLabel";
+            mAPXLabel.Size = new System.Drawing.Size(140, 28);
+            mAPXLabel.TabIndex = 0;
+            mAPXLabel.Text = "Mã phiếu xuất:";
+            // 
+            // nGAYLabel
+            // 
+            nGAYLabel.AutoSize = true;
+            nGAYLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nGAYLabel.Location = new System.Drawing.Point(402, 94);
+            nGAYLabel.Name = "nGAYLabel";
+            nGAYLabel.Size = new System.Drawing.Size(95, 28);
+            nGAYLabel.TabIndex = 2;
+            nGAYLabel.Text = "Ngày lập:";
+            // 
+            // hOTENKHLabel
+            // 
+            hOTENKHLabel.AutoSize = true;
+            hOTENKHLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            hOTENKHLabel.Location = new System.Drawing.Point(46, 253);
+            hOTENKHLabel.Name = "hOTENKHLabel";
+            hOTENKHLabel.Size = new System.Drawing.Size(106, 28);
+            hOTENKHLabel.TabIndex = 4;
+            hOTENKHLabel.Text = "Họ tên KH:";
+            // 
+            // mAKHOLabel
+            // 
+            mAKHOLabel.AutoSize = true;
+            mAKHOLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mAKHOLabel.Location = new System.Drawing.Point(70, 172);
+            mAKHOLabel.Name = "mAKHOLabel";
+            mAKHOLabel.Size = new System.Drawing.Size(82, 28);
+            mAKHOLabel.TabIndex = 8;
+            mAKHOLabel.Text = "Mã kho:";
+            // 
+            // mANVLabel
+            // 
+            mANVLabel.AutoSize = true;
+            mANVLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mANVLabel.Location = new System.Drawing.Point(414, 172);
+            mANVLabel.Name = "mANVLabel";
+            mANVLabel.Size = new System.Drawing.Size(74, 28);
+            mANVLabel.TabIndex = 9;
+            mANVLabel.Text = "MANV:";
+            // 
+            // mAVTLabel
+            // 
+            mAVTLabel.AutoSize = true;
+            mAVTLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mAVTLabel.Location = new System.Drawing.Point(106, 94);
+            mAVTLabel.Name = "mAVTLabel";
+            mAVTLabel.Size = new System.Drawing.Size(69, 28);
+            mAVTLabel.TabIndex = 0;
+            mAVTLabel.Text = "Vật tư:";
+            // 
+            // sOLUONGLabel
+            // 
+            sOLUONGLabel.AutoSize = true;
+            sOLUONGLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            sOLUONGLabel.Location = new System.Drawing.Point(79, 172);
+            sOLUONGLabel.Name = "sOLUONGLabel";
+            sOLUONGLabel.Size = new System.Drawing.Size(96, 28);
+            sOLUONGLabel.TabIndex = 2;
+            sOLUONGLabel.Text = "Số lượng:";
+            // 
+            // dONGIALabel
+            // 
+            dONGIALabel.AutoSize = true;
+            dONGIALabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dONGIALabel.Location = new System.Drawing.Point(90, 253);
+            dONGIALabel.Name = "dONGIALabel";
+            dONGIALabel.Size = new System.Drawing.Size(85, 28);
+            dONGIALabel.TabIndex = 4;
+            dONGIALabel.Text = "Đơn giá:";
             // 
             // dS
             // 
@@ -142,14 +222,14 @@
             this.tableAdapterManager.UpdateOrder = Quan_Ly_Vat_Tu.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
+            // cTPXTableAdapter
+            // 
+            this.cTPXTableAdapter.ClearBeforeFill = true;
+            // 
             // cTPXBindingSource
             // 
             this.cTPXBindingSource.DataMember = "FK_CTPX_PX";
             this.cTPXBindingSource.DataSource = this.phieuXuatBindingSource;
-            // 
-            // cTPXTableAdapter
-            // 
-            this.cTPXTableAdapter.ClearBeforeFill = true;
             // 
             // groupAction
             // 
@@ -207,6 +287,7 @@
             this.BtnSua.Size = new System.Drawing.Size(94, 29);
             this.BtnSua.TabIndex = 9;
             this.BtnSua.Text = "Sửa";
+            this.BtnSua.Click += new System.EventHandler(this.BtnSua_Click);
             // 
             // BtnReload
             // 
@@ -231,6 +312,7 @@
             this.BtnUndo.Size = new System.Drawing.Size(94, 29);
             this.BtnUndo.TabIndex = 5;
             this.BtnUndo.Text = "Undo";
+            this.BtnUndo.Click += new System.EventHandler(this.BtnUndo_Click);
             // 
             // BtnGhi
             // 
@@ -243,6 +325,7 @@
             this.BtnGhi.Size = new System.Drawing.Size(94, 29);
             this.BtnGhi.TabIndex = 4;
             this.BtnGhi.Text = "Ghi";
+            this.BtnGhi.Click += new System.EventHandler(this.BtnGhi_Click);
             // 
             // BtnXoa
             // 
@@ -254,6 +337,7 @@
             this.BtnXoa.Size = new System.Drawing.Size(94, 29);
             this.BtnXoa.TabIndex = 3;
             this.BtnXoa.Text = "Xóa";
+            this.BtnXoa.Click += new System.EventHandler(this.BtnXoa_Click);
             // 
             // BtnThem
             // 
@@ -265,6 +349,7 @@
             this.BtnThem.Size = new System.Drawing.Size(94, 29);
             this.BtnThem.TabIndex = 2;
             this.BtnThem.Text = "Thêm";
+            this.BtnThem.Click += new System.EventHandler(this.BtnThem_Click);
             // 
             // panelControl1
             // 
@@ -398,15 +483,15 @@
             // groupControl1
             // 
             this.groupControl1.Controls.Add(mANVLabel);
-            this.groupControl1.Controls.Add(this.mANVTextEdit);
+            this.groupControl1.Controls.Add(this.Txt_MaNV);
             this.groupControl1.Controls.Add(mAKHOLabel);
-            this.groupControl1.Controls.Add(this.mAKHOTextEdit);
+            this.groupControl1.Controls.Add(this.Txt_MaKho);
             this.groupControl1.Controls.Add(hOTENKHLabel);
-            this.groupControl1.Controls.Add(this.hOTENKHTextEdit);
+            this.groupControl1.Controls.Add(this.Txt_TenKH);
             this.groupControl1.Controls.Add(nGAYLabel);
-            this.groupControl1.Controls.Add(this.nGAYDateEdit);
+            this.groupControl1.Controls.Add(this.DE_PhieuXuat);
             this.groupControl1.Controls.Add(mAPXLabel);
-            this.groupControl1.Controls.Add(this.mAPXTextEdit);
+            this.groupControl1.Controls.Add(this.Txt_MaPX);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupControl1.Enabled = false;
             this.groupControl1.Location = new System.Drawing.Point(0, 453);
@@ -415,15 +500,73 @@
             this.groupControl1.TabIndex = 15;
             this.groupControl1.Text = "Phiếu xuất";
             // 
+            // Txt_MaNV
+            // 
+            this.Txt_MaNV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MANV", true));
+            this.Txt_MaNV.Enabled = false;
+            this.Txt_MaNV.Location = new System.Drawing.Point(503, 169);
+            this.Txt_MaNV.Name = "Txt_MaNV";
+            this.Txt_MaNV.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_MaNV.Properties.Appearance.Options.UseFont = true;
+            this.Txt_MaNV.Size = new System.Drawing.Size(125, 34);
+            this.Txt_MaNV.TabIndex = 10;
+            // 
+            // Txt_MaKho
+            // 
+            this.Txt_MaKho.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MAKHO", true));
+            this.Txt_MaKho.Location = new System.Drawing.Point(158, 169);
+            this.Txt_MaKho.Name = "Txt_MaKho";
+            this.Txt_MaKho.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_MaKho.Properties.Appearance.Options.UseFont = true;
+            this.Txt_MaKho.Size = new System.Drawing.Size(173, 34);
+            this.Txt_MaKho.TabIndex = 9;
+            // 
+            // Txt_TenKH
+            // 
+            this.Txt_TenKH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "HOTENKH", true));
+            this.Txt_TenKH.Location = new System.Drawing.Point(158, 250);
+            this.Txt_TenKH.Name = "Txt_TenKH";
+            this.Txt_TenKH.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_TenKH.Properties.Appearance.Options.UseFont = true;
+            this.Txt_TenKH.Size = new System.Drawing.Size(308, 34);
+            this.Txt_TenKH.TabIndex = 5;
+            // 
+            // DE_PhieuXuat
+            // 
+            this.DE_PhieuXuat.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "NGAY", true));
+            this.DE_PhieuXuat.EditValue = null;
+            this.DE_PhieuXuat.Enabled = false;
+            this.DE_PhieuXuat.Location = new System.Drawing.Point(503, 91);
+            this.DE_PhieuXuat.Name = "DE_PhieuXuat";
+            this.DE_PhieuXuat.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DE_PhieuXuat.Properties.Appearance.Options.UseFont = true;
+            this.DE_PhieuXuat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DE_PhieuXuat.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DE_PhieuXuat.Size = new System.Drawing.Size(275, 34);
+            this.DE_PhieuXuat.TabIndex = 3;
+            // 
+            // Txt_MaPX
+            // 
+            this.Txt_MaPX.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MAPX", true));
+            this.Txt_MaPX.Location = new System.Drawing.Point(158, 91);
+            this.Txt_MaPX.Name = "Txt_MaPX";
+            this.Txt_MaPX.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_MaPX.Properties.Appearance.Options.UseFont = true;
+            this.Txt_MaPX.Size = new System.Drawing.Size(173, 34);
+            this.Txt_MaPX.TabIndex = 1;
+            this.Txt_MaPX.EditValueChanged += new System.EventHandler(this.mAPXTextEdit_EditValueChanged);
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.Cmb_VatTu);
             this.groupControl2.Controls.Add(dONGIALabel);
-            this.groupControl2.Controls.Add(this.dONGIATextEdit);
+            this.groupControl2.Controls.Add(this.Txt_DonGia);
             this.groupControl2.Controls.Add(sOLUONGLabel);
-            this.groupControl2.Controls.Add(this.sOLUONGTextEdit);
+            this.groupControl2.Controls.Add(this.Txt_SoLuong);
             this.groupControl2.Controls.Add(mAVTLabel);
-            this.groupControl2.Controls.Add(this.mAVTTextEdit);
+            this.groupControl2.Controls.Add(this.Txt_MaVT);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Enabled = false;
             this.groupControl2.Location = new System.Drawing.Point(1082, 453);
@@ -432,176 +575,9 @@
             this.groupControl2.TabIndex = 16;
             this.groupControl2.Text = "Chi tiết phiếu xuất";
             // 
-            // mAPXLabel
-            // 
-            mAPXLabel.AutoSize = true;
-            mAPXLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mAPXLabel.Location = new System.Drawing.Point(12, 94);
-            mAPXLabel.Name = "mAPXLabel";
-            mAPXLabel.Size = new System.Drawing.Size(140, 28);
-            mAPXLabel.TabIndex = 0;
-            mAPXLabel.Text = "Mã phiếu xuất:";
-            // 
-            // mAPXTextEdit
-            // 
-            this.mAPXTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MAPX", true));
-            this.mAPXTextEdit.Location = new System.Drawing.Point(158, 91);
-            this.mAPXTextEdit.Name = "mAPXTextEdit";
-            this.mAPXTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mAPXTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.mAPXTextEdit.Size = new System.Drawing.Size(173, 34);
-            this.mAPXTextEdit.TabIndex = 1;
-            this.mAPXTextEdit.EditValueChanged += new System.EventHandler(this.mAPXTextEdit_EditValueChanged);
-            // 
-            // nGAYLabel
-            // 
-            nGAYLabel.AutoSize = true;
-            nGAYLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nGAYLabel.Location = new System.Drawing.Point(402, 94);
-            nGAYLabel.Name = "nGAYLabel";
-            nGAYLabel.Size = new System.Drawing.Size(95, 28);
-            nGAYLabel.TabIndex = 2;
-            nGAYLabel.Text = "Ngày lập:";
-            // 
-            // nGAYDateEdit
-            // 
-            this.nGAYDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "NGAY", true));
-            this.nGAYDateEdit.EditValue = null;
-            this.nGAYDateEdit.Location = new System.Drawing.Point(503, 91);
-            this.nGAYDateEdit.Name = "nGAYDateEdit";
-            this.nGAYDateEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nGAYDateEdit.Properties.Appearance.Options.UseFont = true;
-            this.nGAYDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nGAYDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nGAYDateEdit.Size = new System.Drawing.Size(275, 34);
-            this.nGAYDateEdit.TabIndex = 3;
-            // 
-            // hOTENKHLabel
-            // 
-            hOTENKHLabel.AutoSize = true;
-            hOTENKHLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            hOTENKHLabel.Location = new System.Drawing.Point(46, 253);
-            hOTENKHLabel.Name = "hOTENKHLabel";
-            hOTENKHLabel.Size = new System.Drawing.Size(106, 28);
-            hOTENKHLabel.TabIndex = 4;
-            hOTENKHLabel.Text = "Họ tên KH:";
-            // 
-            // hOTENKHTextEdit
-            // 
-            this.hOTENKHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "HOTENKH", true));
-            this.hOTENKHTextEdit.Location = new System.Drawing.Point(158, 250);
-            this.hOTENKHTextEdit.Name = "hOTENKHTextEdit";
-            this.hOTENKHTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hOTENKHTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.hOTENKHTextEdit.Size = new System.Drawing.Size(308, 34);
-            this.hOTENKHTextEdit.TabIndex = 5;
-            // 
-            // mAKHOLabel
-            // 
-            mAKHOLabel.AutoSize = true;
-            mAKHOLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mAKHOLabel.Location = new System.Drawing.Point(70, 172);
-            mAKHOLabel.Name = "mAKHOLabel";
-            mAKHOLabel.Size = new System.Drawing.Size(82, 28);
-            mAKHOLabel.TabIndex = 8;
-            mAKHOLabel.Text = "Mã kho:";
-            // 
-            // mAKHOTextEdit
-            // 
-            this.mAKHOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MAKHO", true));
-            this.mAKHOTextEdit.Location = new System.Drawing.Point(158, 169);
-            this.mAKHOTextEdit.Name = "mAKHOTextEdit";
-            this.mAKHOTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mAKHOTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.mAKHOTextEdit.Size = new System.Drawing.Size(173, 34);
-            this.mAKHOTextEdit.TabIndex = 9;
-            // 
-            // mANVLabel
-            // 
-            mANVLabel.AutoSize = true;
-            mANVLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mANVLabel.Location = new System.Drawing.Point(414, 172);
-            mANVLabel.Name = "mANVLabel";
-            mANVLabel.Size = new System.Drawing.Size(74, 28);
-            mANVLabel.TabIndex = 9;
-            mANVLabel.Text = "MANV:";
-            // 
-            // mANVTextEdit
-            // 
-            this.mANVTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MANV", true));
-            this.mANVTextEdit.Enabled = false;
-            this.mANVTextEdit.Location = new System.Drawing.Point(503, 169);
-            this.mANVTextEdit.Name = "mANVTextEdit";
-            this.mANVTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mANVTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.mANVTextEdit.Size = new System.Drawing.Size(125, 34);
-            this.mANVTextEdit.TabIndex = 10;
-            // 
-            // mAVTLabel
-            // 
-            mAVTLabel.AutoSize = true;
-            mAVTLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mAVTLabel.Location = new System.Drawing.Point(74, 94);
-            mAVTLabel.Name = "mAVTLabel";
-            mAVTLabel.Size = new System.Drawing.Size(101, 28);
-            mAVTLabel.TabIndex = 0;
-            mAVTLabel.Text = "Tên vật tư:";
-            // 
-            // mAVTTextEdit
-            // 
-            this.mAVTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.cTPXBindingSource, "MAVT", true));
-            this.mAVTTextEdit.Location = new System.Drawing.Point(193, 91);
-            this.mAVTTextEdit.Name = "mAVTTextEdit";
-            this.mAVTTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mAVTTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.mAVTTextEdit.Size = new System.Drawing.Size(264, 34);
-            this.mAVTTextEdit.TabIndex = 1;
-            // 
-            // sOLUONGLabel
-            // 
-            sOLUONGLabel.AutoSize = true;
-            sOLUONGLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sOLUONGLabel.Location = new System.Drawing.Point(79, 172);
-            sOLUONGLabel.Name = "sOLUONGLabel";
-            sOLUONGLabel.Size = new System.Drawing.Size(96, 28);
-            sOLUONGLabel.TabIndex = 2;
-            sOLUONGLabel.Text = "Số lượng:";
-            // 
-            // sOLUONGTextEdit
-            // 
-            this.sOLUONGTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.cTPXBindingSource, "SOLUONG", true));
-            this.sOLUONGTextEdit.Location = new System.Drawing.Point(193, 169);
-            this.sOLUONGTextEdit.Name = "sOLUONGTextEdit";
-            this.sOLUONGTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sOLUONGTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.sOLUONGTextEdit.Size = new System.Drawing.Size(125, 34);
-            this.sOLUONGTextEdit.TabIndex = 3;
-            // 
-            // dONGIALabel
-            // 
-            dONGIALabel.AutoSize = true;
-            dONGIALabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dONGIALabel.Location = new System.Drawing.Point(90, 253);
-            dONGIALabel.Name = "dONGIALabel";
-            dONGIALabel.Size = new System.Drawing.Size(85, 28);
-            dONGIALabel.TabIndex = 4;
-            dONGIALabel.Text = "Đơn giá:";
-            // 
-            // dONGIATextEdit
-            // 
-            this.dONGIATextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.cTPXBindingSource, "DONGIA", true));
-            this.dONGIATextEdit.Location = new System.Drawing.Point(193, 250);
-            this.dONGIATextEdit.Name = "dONGIATextEdit";
-            this.dONGIATextEdit.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dONGIATextEdit.Properties.Appearance.Options.UseFont = true;
-            this.dONGIATextEdit.Size = new System.Drawing.Size(264, 34);
-            this.dONGIATextEdit.TabIndex = 5;
-            // 
             // Cmb_VatTu
             // 
-            this.Cmb_VatTu.Location = new System.Drawing.Point(193, 51);
+            this.Cmb_VatTu.Location = new System.Drawing.Point(193, 91);
             this.Cmb_VatTu.Name = "Cmb_VatTu";
             this.Cmb_VatTu.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cmb_VatTu.Properties.Appearance.Options.UseFont = true;
@@ -609,6 +585,42 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.Cmb_VatTu.Size = new System.Drawing.Size(264, 34);
             this.Cmb_VatTu.TabIndex = 6;
+            this.Cmb_VatTu.SelectedIndexChanged += new System.EventHandler(this.Cmb_VatTu_SelectedIndexChanged);
+            // 
+            // Txt_DonGia
+            // 
+            this.Txt_DonGia.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.cTPXBindingSource, "DONGIA", true));
+            this.Txt_DonGia.Location = new System.Drawing.Point(193, 250);
+            this.Txt_DonGia.Name = "Txt_DonGia";
+            this.Txt_DonGia.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_DonGia.Properties.Appearance.Options.UseFont = true;
+            this.Txt_DonGia.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.Txt_DonGia.Properties.MaskSettings.Set("mask", "n");
+            this.Txt_DonGia.Size = new System.Drawing.Size(264, 34);
+            this.Txt_DonGia.TabIndex = 5;
+            // 
+            // Txt_SoLuong
+            // 
+            this.Txt_SoLuong.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.cTPXBindingSource, "SOLUONG", true));
+            this.Txt_SoLuong.Location = new System.Drawing.Point(193, 169);
+            this.Txt_SoLuong.Name = "Txt_SoLuong";
+            this.Txt_SoLuong.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_SoLuong.Properties.Appearance.Options.UseFont = true;
+            this.Txt_SoLuong.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.Txt_SoLuong.Properties.MaskSettings.Set("mask", "d");
+            this.Txt_SoLuong.Size = new System.Drawing.Size(125, 34);
+            this.Txt_SoLuong.TabIndex = 3;
+            // 
+            // Txt_MaVT
+            // 
+            this.Txt_MaVT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.cTPXBindingSource, "MAVT", true));
+            this.Txt_MaVT.Enabled = false;
+            this.Txt_MaVT.Location = new System.Drawing.Point(193, 91);
+            this.Txt_MaVT.Name = "Txt_MaVT";
+            this.Txt_MaVT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_MaVT.Properties.Appearance.Options.UseFont = true;
+            this.Txt_MaVT.Size = new System.Drawing.Size(264, 34);
+            this.Txt_MaVT.TabIndex = 1;
             // 
             // PhieuXuat
             // 
@@ -637,19 +649,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaNV.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaKho.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_TenKH.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DE_PhieuXuat.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DE_PhieuXuat.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaPX.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mAPXTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nGAYDateEdit.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nGAYDateEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hOTENKHTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mAKHOTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mANVTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mAVTTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sOLUONGTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dONGIATextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cmb_VatTu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_DonGia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_SoLuong.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_MaVT.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -685,14 +697,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.TextEdit mANVTextEdit;
-        private DevExpress.XtraEditors.TextEdit mAKHOTextEdit;
-        private DevExpress.XtraEditors.TextEdit hOTENKHTextEdit;
-        private DevExpress.XtraEditors.DateEdit nGAYDateEdit;
-        private DevExpress.XtraEditors.TextEdit mAPXTextEdit;
-        private DevExpress.XtraEditors.TextEdit dONGIATextEdit;
-        private DevExpress.XtraEditors.TextEdit sOLUONGTextEdit;
-        private DevExpress.XtraEditors.TextEdit mAVTTextEdit;
+        private DevExpress.XtraEditors.TextEdit Txt_MaNV;
+        private DevExpress.XtraEditors.TextEdit Txt_MaKho;
+        private DevExpress.XtraEditors.TextEdit Txt_TenKH;
+        private DevExpress.XtraEditors.DateEdit DE_PhieuXuat;
+        private DevExpress.XtraEditors.TextEdit Txt_MaPX;
+        private DevExpress.XtraEditors.TextEdit Txt_DonGia;
+        private DevExpress.XtraEditors.TextEdit Txt_SoLuong;
+        private DevExpress.XtraEditors.TextEdit Txt_MaVT;
         private DevExpress.XtraEditors.ComboBoxEdit Cmb_VatTu;
     }
 }

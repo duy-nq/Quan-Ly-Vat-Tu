@@ -157,34 +157,6 @@ namespace Quan_Ly_Vat_Tu
             MessageBox.Show("Chuyển sang chế độ " + (CTMode ? "phiếu nhập!" : "chi tiết phiếu nhập!"));
         }
 
-        private bool CanBeDelete(BindingSource parent)
-        {
-            if (parent.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu để xóa!");
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool CanBeDelete(BindingSource parent, BindingSource child)
-        {
-            if (parent.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu để xóa!");
-                return false;
-            }
-            
-            if (child.Count > 0)
-            {
-                MessageBox.Show("Không thể xóa vì đã có " + child.Count + " dữ liệu phụ thuộc!");
-                return false;
-            }
-            
-            return true;
-        }
-
         private void DeleteRecord(BindingSource bds)
         {
             string txt = "Tiến hành xóa thông tin ra khỏi DB?";
@@ -412,14 +384,14 @@ namespace Quan_Ly_Vat_Tu
         {
             if (!CTMode)
             {
-                if (CanBeDelete(cTPNBindingSource))
+                if (Program.CanBeDelete(cTPNBindingSource))
                 {
                     DeleteRecord(cTPNBindingSource);
                 }
             }
             else
             {
-                if (CanBeDelete(phieuNhapBindingSource, cTPNBindingSource))
+                if (Program.CanBeDelete(phieuNhapBindingSource, cTPNBindingSource))
                 {
                     DeleteRecord(phieuNhapBindingSource);
                 }

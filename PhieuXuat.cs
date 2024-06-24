@@ -18,8 +18,6 @@ namespace Quan_Ly_Vat_Tu
         bool dangThemMoi = false;
         private bool CTMode = true;
 
-        private static readonly DataTable DT_DSVT = new DataTable();
-
         public PhieuXuat()
         {
             InitializeComponent();
@@ -46,6 +44,10 @@ namespace Quan_Ly_Vat_Tu
                 BtnGhi.Enabled = BtnUndo.Enabled = simpleButton1.Enabled = false;
 
                 Cmb_ChiNhanh.Enabled = true;
+            }
+            else
+            {
+                Program.LoadVatTu(Cmb_VatTu);
             }
         }
 
@@ -94,40 +96,286 @@ namespace Quan_Ly_Vat_Tu
 
         private void mAPXTextEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (CTMode) return;
 
-            DT_DSVT.Clear();
-            Cmb_VatTu.Properties.Items.Clear();
+        }
 
-            Cmb_VatTu.Properties.Items.Add("-Lựa chọn vật tư-");
-
-            string Sql_Query = "SELECT * FROM QLVT_DATHANG.dbo.View_DSVT";
-
-            if (Program.connection.State == ConnectionState.Closed)
+        private String get_MaVT(String tenVT)
+        {
+            foreach (DataRow dr in Program.DT_DSVT.Rows)
             {
-                Program.connection.Open();
+                if (dr["TENVT"].ToString().Trim() == tenVT.Trim())
+                {
+                    return dr["MAVT"].ToString();
+                }
             }
 
-            if (DT_DSVT.Rows.Count == 0)
+            return "ERR-NOT-FOUND";
+        }
+
+        private void Cmb_VatTu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Txt_MaVT.Text = get_MaVT(Cmb_VatTu.Text);
+        }
+
+        private void Setting()
+        {
+            BtnXoa.Enabled = false;
+            BtnSua.Enabled = false;
+            BtnThem.Enabled = false;
+            BtnReload.Enabled = false;
+            simpleButton1.Enabled = false;
+            BtnUndo.Enabled = true;
+            BtnGhi.Enabled = true;
+        }
+
+        private void ReverseSetting()
+        {
+            panelControl1.Enabled = true;
+
+            groupControl1.Enabled = false;
+            groupControl2.Enabled = false;
+
+            BtnXoa.Enabled = true;
+            BtnThem.Enabled = true;
+            BtnSua.Enabled = true;
+            BtnReload.Enabled = true;
+            BtnUndo.Enabled = false;
+            BtnGhi.Enabled = false;
+            simpleButton1.Enabled = true;
+
+            Cmb_VatTu.Visible = false;
+        }
+
+        private void DeleteRecord(BindingSource bds)
+        {
+            string txt = "Tiến hành xóa thông tin ra khỏi DB?";
+
+            if (MessageBox.Show(txt, "Cảnh báo", MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
-                SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
-                da.Fill(DT_DSVT);
+                return;
             }
 
-            foreach (DataRow dr in DT_DSVT.Rows)
-            {
-                Cmb_ChiNhanh.Properties.Items.Add(dr["TENVT"]);
-            }
-
-            Cmb_ChiNhanh.SelectedIndex = 0;
             try
             {
-                Cmb_ChiNhanh.SelectedIndex = 1;
+                vitri = bds.Position;
+                bds.RemoveCurrent();
+
+                if (CTMode)
+                {
+                    phieuXuatTableAdapter.Connection.ConnectionString = Program.connection_string;
+                    phieuXuatTableAdapter.Update(dS.PhieuXuat);
+                }
+                else
+                {
+                    cTPXTableAdapter.Connection.ConnectionString = Program.connection_string;
+                    cTPXTableAdapter.Update(dS.CTPX);
+                }
+
+                MessageBox.Show("Xóa thành công!", "Thông báo");
             }
-            finally
+            catch
             {
-                Cmb_ChiNhanh.SelectedIndex = 0;
+                MessageBox.Show("Xóa thất bại!", "Thông báo");
+
+                if (CTMode)
+                {
+                    phieuXuatTableAdapter.Fill(dS.PhieuXuat);
+                    phieuXuatBindingSource.Position = vitri;
+                }
+                else
+                {
+                    cTPXTableAdapter.Fill(dS.CTPX);
+                    cTPXBindingSource.Position = vitri;
+                }
             }
+        }
+
+        private bool IsValid()
+        {
+            if (CTMode)
+            {
+                if (Txt_MaPX.Text == "")
+                {
+                    MessageBox.Show("Mã phiếu xuất không được để trống!", "Thông báo");
+                    return false;
+                }
+
+                if (Txt_TenKH.Text == "")
+                {
+                    MessageBox.Show("Tên khách hàng không được để trống!", "Thông báo");
+                    return false;
+                }
+            }
+            else
+            {
+                if (Txt_MaVT.Text == "" || Txt_SoLuong.Text == "" || Txt_DonGia.Text == "")
+                {
+                    MessageBox.Show("Kiểm tra lại thông tin vật tư!", "Thông báo");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private void SaveProcess01(BindingSource bds)
+        {
+            groupControl1.Enabled = false;
+
+            phieuXuatTableAdapter.Connection.ConnectionString = Program.connection_string;
+            phieuXuatTableAdapter.Update(dS.PhieuXuat);
+
+            if (dangThemMoi)
+            {
+                dangThemMoi = false;
+                phieuXuatTableAdapter.Fill(dS.PhieuXuat);
+            }
+            else
+            {
+                bds.ResetCurrentItem();
+            }
+        }
+
+        private void SaveProcess02(BindingSource bds)
+        {
+            groupControl2.Enabled = false;
+
+            cTPXTableAdapter.Connection.ConnectionString = Program.connection_string;
+            cTPXTableAdapter.Update(dS.CTPX);
+
+            if (dangThemMoi)
+            {
+                dangThemMoi = false;
+                cTPXTableAdapter.Fill(dS.CTPX);
+                Cmb_VatTu.SelectedIndex = 0;
+            }
+            else
+            {
+                bds.ResetCurrentItem();
+            }
+        }
+
+        private void SaveRecord(BindingSource bds)
+        {
+            try
+            {
+                bds.EndEdit();
+
+                if (CTMode) SaveProcess01(bds);
+                else SaveProcess02(bds);
+
+                MessageBox.Show("Ghi thành công!", "Thông báo");
+                ReverseSetting();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi ghi: " + ex.Message, "Thông báo");
+            }
+        }
+
+        private void UndoProcess01()
+        {
+            phieuXuatTableAdapter.Fill(dS.PhieuXuat);
+            phieuXuatBindingSource.Position = vitri;
+        }
+
+        private void UndoProcess02()
+        {
+            cTPXTableAdapter.Fill(dS.CTPX);
+            cTPXBindingSource.Position = vitri;
+        }
+
+        private void UndoRecord(BindingSource bds)
+        {
+            if (dangThemMoi == true && BtnThem.Enabled == false)
+            {
+                bds.CancelEdit();
+
+                if (CTMode) UndoProcess01();
+                else UndoProcess02();
+
+                dangThemMoi = false;
+            }
+            else
+            {
+                if (CTMode) UndoProcess01();
+                else UndoProcess02();
+            }
+        }
+
+        private void BtnThem_Click(object sender, EventArgs e)
+        {
+            dangThemMoi = true;
+            groupControl1.Enabled = false;
+
+            Setting();
+
+            if (!CTMode)
+            {
+                groupControl2.Enabled = true;
+                Cmb_VatTu.Visible = true;
+
+                cTPXBindingSource.AddNew();
+                vitri = cTPXBindingSource.Position;
+            }
+            else
+            {
+                groupControl1.Enabled = true;
+                Txt_MaPX.Enabled = true;
+                phieuXuatBindingSource.AddNew();
+                vitri = phieuXuatBindingSource.Position;
+                DE_PhieuXuat.DateTime = DateTime.Now.Date;
+                Txt_MaNV.Text = Program.main_maNV;
+            }
+        }
+
+        private void BtnXoa_Click(object sender, EventArgs e)
+        {
+            if (!CTMode)
+            {
+                if (Program.CanBeDelete(cTPXBindingSource))
+                {
+                    DeleteRecord(cTPXBindingSource);
+                }
+            }
+            else
+            {
+                if (Program.CanBeDelete(phieuXuatBindingSource, cTPXBindingSource))
+                {
+                    DeleteRecord(phieuXuatBindingSource);
+                }
+            }
+        }
+
+        private void BtnSua_Click(object sender, EventArgs e)
+        {
+            Setting();
+            Txt_MaPX.Enabled = false;
+
+            vitri = CTMode ? phieuXuatBindingSource.Position : cTPXBindingSource.Position;
+
+            groupControl1.Enabled = false;
+
+            if (CTMode)
+            {
+                groupControl1.Enabled = true;
+                Txt_MaKho.Focus();
+            }
+            else groupControl2.Enabled = true;
+        }
+
+        private void BtnGhi_Click(object sender, EventArgs e)
+        {
+            if (!IsValid()) return;
+            
+            SaveRecord(CTMode ? phieuXuatBindingSource : cTPXBindingSource);
+        }
+
+        private void BtnUndo_Click(object sender, EventArgs e)
+        {
+            UndoRecord(CTMode ? phieuXuatBindingSource : cTPXBindingSource);
+
+            ReverseSetting();
         }
     }
 }
