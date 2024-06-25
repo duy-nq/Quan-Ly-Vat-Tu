@@ -309,6 +309,7 @@
             this.Btn_Kho.Size = new System.Drawing.Size(94, 84);
             this.Btn_Kho.TabIndex = 4;
             this.Btn_Kho.Text = "Kho";
+            this.Btn_Kho.Click += new System.EventHandler(this.Btn_Kho_Click);
             // 
             // Btn_VatTu
             // 

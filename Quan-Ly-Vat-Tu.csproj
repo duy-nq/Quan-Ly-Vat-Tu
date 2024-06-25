@@ -108,13 +108,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DS2.cs">
-      <DependentUpon>DS2.xsd</DependentUpon>
+    <Compile Include="FormChonKhoHang.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DS2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DS2.xsd</DependentUpon>
+    <Compile Include="FormChonKhoHang.Designer.cs">
+      <DependentUpon>FormChonKhoHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChonNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChonNhanVien.Designer.cs">
+      <DependentUpon>FormChonNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChonVatTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChonVatTu.Designer.cs">
+      <DependentUpon>FormChonVatTu.cs</DependentUpon>
     </Compile>
     <Compile Include="FormChuyenChiNhanh.cs">
       <SubType>Form</SubType>
@@ -127,6 +137,12 @@
     </Compile>
     <Compile Include="FormTaoLogin.Designer.cs">
       <DependentUpon>FormTaoLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kho.Designer.cs">
+      <DependentUpon>Kho.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -238,11 +254,23 @@
     <EmbeddedResource Include="DonDatHang.resx">
       <DependentUpon>DonDatHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChonKhoHang.resx">
+      <DependentUpon>FormChonKhoHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChonNhanVien.resx">
+      <DependentUpon>FormChonNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChonVatTu.resx">
+      <DependentUpon>FormChonVatTu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChuyenChiNhanh.resx">
       <DependentUpon>FormChuyenChiNhanh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTaoLogin.resx">
       <DependentUpon>FormTaoLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kho.resx">
+      <DependentUpon>Kho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -318,17 +346,6 @@
     <None Include="DS.xss">
       <DependentUpon>DS.xsd</DependentUpon>
     </None>
-    <None Include="DS2.xsc">
-      <DependentUpon>DS2.xsd</DependentUpon>
-    </None>
-    <None Include="DS2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DS2.xss">
-      <DependentUpon>DS2.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -339,6 +356,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SubForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

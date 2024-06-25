@@ -246,5 +246,17 @@ namespace Quan_Ly_Vat_Tu
             }
             else form.Activate();
         }
+
+        private void Btn_Kho_Click(object sender, EventArgs e)
+        {
+            Form f = this.CheckExists(typeof(Kho));
+            if (f != null) { f.Activate(); }
+            else
+            {
+                Kho frm = new Kho();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }
