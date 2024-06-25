@@ -83,6 +83,8 @@ namespace Quan_Ly_Vat_Tu
                 Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_ChonCheDo.Enabled = true;
                 Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
             }
+
+            if (bds.Count == 0) Btn_Xoa.Enabled = false;
         }
 
         private void Btn_CTDDH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -105,6 +107,8 @@ namespace Quan_Ly_Vat_Tu
                 Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_ChonCheDo.Enabled = true;
                 Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
             }
+
+            if (bds.Count == 0) Btn_Xoa.Enabled = false;
         }
 
         private void Btn_ChonNhanVien_Click(object sender, EventArgs e)
@@ -232,6 +236,7 @@ namespace Quan_Ly_Vat_Tu
         private void Btn_Xoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             String maSoDDH = "";
+
             if (chedo == "DATHANG")
             {
                 if (Bds_CTDDH.Count > 0)
@@ -282,7 +287,6 @@ namespace Quan_Ly_Vat_Tu
                     }
                 }
             }
-            
 
             if (bds.Count == 0) Btn_Xoa.Enabled = false;
         }

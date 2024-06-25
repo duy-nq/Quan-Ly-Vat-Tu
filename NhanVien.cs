@@ -89,7 +89,7 @@ namespace Quan_Ly_Vat_Tu
         {
             vitri = Bds_NhanVien.Position;
 
-            Txt_MaNV.Enabled = false;
+            Txt_MaNV.Enabled = Txt_MaCN.Enabled = false;
             Gc_NhanVien.Enabled = false;
             Panel_NhapLieu.Enabled = true;
             Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = false;
@@ -243,8 +243,8 @@ namespace Quan_Ly_Vat_Tu
 
             Gc_NhanVien.Enabled = true;
             Panel_NhapLieu.Enabled = false;
-            Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
-            Btn_PhucHoi.Enabled = false;
+            Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
+            Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
         }
 
         private void Btn_LamMoi_ItemClick(object sender, ItemClickEventArgs e)

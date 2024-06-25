@@ -23,15 +23,15 @@ namespace Quan_Ly_Vat_Tu
 
         private void VatTu_Load(object sender, EventArgs e)
         {
-            DS2.EnforceConstraints = false;
+            DS.EnforceConstraints = false;
             this.VATTUTableAdapter.Connection.ConnectionString = Program.connection_string;
-            this.VATTUTableAdapter.Fill(this.DS2.Vattu);
+            this.VATTUTableAdapter.Fill(this.DS.Vattu);
             this.CTPNTableAdapter.Connection.ConnectionString = Program.connection_string;
-            this.CTPNTableAdapter.Fill(this.DS2.CTPN);
+            this.CTPNTableAdapter.Fill(this.DS.CTPN);
             this.CTPXTableAdapter.Connection.ConnectionString = Program.connection_string;
-            this.CTPXTableAdapter.Fill(this.DS2.CTPX);
+            this.CTPXTableAdapter.Fill(this.DS.CTPX);
             this.CTDDHTableAdapter.Connection.ConnectionString = Program.connection_string;
-            this.CTDDHTableAdapter.Fill(this.DS2.CTDDH);
+            this.CTDDHTableAdapter.Fill(this.DS.CTDDH);
 
             if (Program.main_group == "CONGTY")
             {
@@ -40,8 +40,8 @@ namespace Quan_Ly_Vat_Tu
                 Panel_NhapLieu.Enabled = false;
             } else
             {
-                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
-                Btn_PhucHoi.Enabled = Panel_NhapLieu.Enabled = false;
+                Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
+                Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = Panel_NhapLieu.Enabled = false;
             }
         }
 
@@ -87,7 +87,7 @@ namespace Quan_Ly_Vat_Tu
             }
             if (Bds_CTDDH.Count > 0)
             {
-                MessageBox.Show("Không thể xóa nhân viên này vì đã có trong đơn đặt hàng", "", MessageBoxButtons.OK);
+                MessageBox.Show("Không thể xóa vật tư này vì đã có trong đơn đặt hàng", "", MessageBoxButtons.OK);
                 return;
             }
 
@@ -123,12 +123,12 @@ namespace Quan_Ly_Vat_Tu
                     //mavt = ((DataRowView)Bds_VatTu[Bds_VatTu.Position])["MAVT"].ToString();
                     Bds_VatTu.RemoveCurrent();
                     this.VATTUTableAdapter.Connection.ConnectionString = Program.connection_string;
-                    this.VATTUTableAdapter.Update(this.DS2.Vattu);
+                    this.VATTUTableAdapter.Update(this.DS.Vattu);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi xóa vật tư. Bạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                    this.VATTUTableAdapter.Fill(this.DS2.Vattu);
+                    this.VATTUTableAdapter.Fill(this.DS.Vattu);
                     Bds_VatTu.Position = Bds_VatTu.Find("MAVT", mavt);
                     return;
                 }
@@ -156,6 +156,12 @@ namespace Quan_Ly_Vat_Tu
                 Txt_DVT.Focus();
                 return false;
             }
+            if (SpinEdit_SoLuongTon.Value < 0)
+            {
+                MessageBox.Show("Số lượng vật tư không được nhỏ hơn 0!", "", MessageBoxButtons.OK);
+                SpinEdit_SoLuongTon.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -170,7 +176,7 @@ namespace Quan_Ly_Vat_Tu
                 // Đưa thông tin lên lưới
                 Bds_VatTu.ResetCurrentItem();
                 this.VATTUTableAdapter.Connection.ConnectionString = Program.connection_string;
-                this.VATTUTableAdapter.Update(this.DS2.Vattu);
+                this.VATTUTableAdapter.Update(this.DS.Vattu);
             }
             catch (Exception ex)
             {
@@ -191,15 +197,15 @@ namespace Quan_Ly_Vat_Tu
 
             Gc_VatTu.Enabled = true;
             Panel_NhapLieu.Enabled = false;
-            Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_Ghi.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
-            Btn_PhucHoi.Enabled = false;
+            Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
+            Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
         }
 
         private void Btn_LamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
-                this.VATTUTableAdapter.Fill(this.DS2.Vattu);
+                this.VATTUTableAdapter.Fill(this.DS.Vattu);
             }
             catch (Exception ex)
             {
