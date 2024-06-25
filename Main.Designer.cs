@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.groupFunc = new DevExpress.XtraEditors.GroupControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDangXuat = new DevExpress.XtraEditors.SimpleButton();
+            this.Btn_Thoat = new DevExpress.XtraEditors.SimpleButton();
+            this.Btn_DangXuat = new DevExpress.XtraEditors.SimpleButton();
             this.Group_BaoCao = new DevExpress.XtraEditors.GroupControl();
             this.Btn_THNX = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -52,6 +52,10 @@
             this.Btn_Kho = new DevExpress.XtraEditors.SimpleButton();
             this.Btn_VatTu = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.Status_MaNV = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Status_HoTenNV = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Status_Nhom = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.groupFunc)).BeginInit();
             this.groupFunc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -65,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Group_VatTuKho)).BeginInit();
             this.Group_VatTuKho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupFunc
@@ -86,33 +91,35 @@
             // 
             this.groupControl1.AppearanceCaption.Options.UseTextOptions = true;
             this.groupControl1.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.groupControl1.Controls.Add(this.btnExit);
-            this.groupControl1.Controls.Add(this.btnDangXuat);
+            this.groupControl1.Controls.Add(this.Btn_Thoat);
+            this.groupControl1.Controls.Add(this.Btn_DangXuat);
             this.groupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Light;
             this.groupControl1.Location = new System.Drawing.Point(1622, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(205, 120);
             this.groupControl1.TabIndex = 7;
             // 
-            // btnExit
+            // Btn_Thoat
             // 
-            this.btnExit.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExit.ImageOptions.SvgImage")));
-            this.btnExit.Location = new System.Drawing.Point(105, 31);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(94, 84);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "Thoát";
+            this.Btn_Thoat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.Btn_Thoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_Thoat.ImageOptions.SvgImage")));
+            this.Btn_Thoat.Location = new System.Drawing.Point(105, 31);
+            this.Btn_Thoat.Name = "Btn_Thoat";
+            this.Btn_Thoat.Size = new System.Drawing.Size(94, 84);
+            this.Btn_Thoat.TabIndex = 4;
+            this.Btn_Thoat.Text = "Thoát";
+            this.Btn_Thoat.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnDangXuat
+            // Btn_DangXuat
             // 
-            this.btnDangXuat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnDangXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDangXuat.ImageOptions.SvgImage")));
-            this.btnDangXuat.Location = new System.Drawing.Point(5, 31);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(94, 84);
-            this.btnDangXuat.TabIndex = 2;
-            this.btnDangXuat.Text = "Đăng Xuất";
+            this.Btn_DangXuat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.Btn_DangXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_DangXuat.ImageOptions.SvgImage")));
+            this.Btn_DangXuat.Location = new System.Drawing.Point(5, 31);
+            this.Btn_DangXuat.Name = "Btn_DangXuat";
+            this.Btn_DangXuat.Size = new System.Drawing.Size(94, 84);
+            this.Btn_DangXuat.TabIndex = 2;
+            this.Btn_DangXuat.Text = "Đăng Xuất";
+            this.Btn_DangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // Group_BaoCao
             // 
@@ -130,6 +137,7 @@
             this.Group_BaoCao.Size = new System.Drawing.Size(883, 120);
             this.Group_BaoCao.TabIndex = 6;
             this.Group_BaoCao.Text = "Báo Cáo";
+            this.Group_BaoCao.Paint += new System.Windows.Forms.PaintEventHandler(this.Group_BaoCao_Paint);
             // 
             // Btn_THNX
             // 
@@ -220,6 +228,7 @@
             this.Btn_DDH.Size = new System.Drawing.Size(94, 84);
             this.Btn_DDH.TabIndex = 5;
             this.Btn_DDH.Text = "Đơn Đặt Hàng";
+            this.Btn_DDH.Click += new System.EventHandler(this.Btn_DDH_Click);
             // 
             // Btn_PhieuXuat
             // 
@@ -230,6 +239,7 @@
             this.Btn_PhieuXuat.Size = new System.Drawing.Size(94, 84);
             this.Btn_PhieuXuat.TabIndex = 4;
             this.Btn_PhieuXuat.Text = "Phiếu Xuất";
+            this.Btn_PhieuXuat.Click += new System.EventHandler(this.Btn_PhieuXuat_Click);
             // 
             // Btn_PhieuNhap
             // 
@@ -240,6 +250,7 @@
             this.Btn_PhieuNhap.Size = new System.Drawing.Size(94, 84);
             this.Btn_PhieuNhap.TabIndex = 2;
             this.Btn_PhieuNhap.Text = "Phiếu Nhập";
+            this.Btn_PhieuNhap.Click += new System.EventHandler(this.Btn_PhieuNhap_Click);
             // 
             // groupQuanLy
             // 
@@ -263,6 +274,7 @@
             this.Btn_TaoLogin.Size = new System.Drawing.Size(94, 84);
             this.Btn_TaoLogin.TabIndex = 1;
             this.Btn_TaoLogin.Text = "Tạo Login";
+            this.Btn_TaoLogin.Click += new System.EventHandler(this.Btn_TaoLogin_Click);
             // 
             // Btn_NhanVien
             // 
@@ -273,6 +285,7 @@
             this.Btn_NhanVien.Size = new System.Drawing.Size(94, 84);
             this.Btn_NhanVien.TabIndex = 0;
             this.Btn_NhanVien.Text = "Nhân Viên";
+            this.Btn_NhanVien.Click += new System.EventHandler(this.Btn_NhanVien_Click);
             // 
             // Group_VatTuKho
             // 
@@ -306,20 +319,54 @@
             this.Btn_VatTu.Size = new System.Drawing.Size(94, 84);
             this.Btn_VatTu.TabIndex = 2;
             this.Btn_VatTu.Text = "Vật Tư";
+            this.Btn_VatTu.Click += new System.EventHandler(this.Btn_VatTu_Click);
             // 
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Status_MaNV,
+            this.Status_HoTenNV,
+            this.Status_Nhom});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1014);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1918, 26);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // Status_MaNV
+            // 
+            this.Status_MaNV.Name = "Status_MaNV";
+            this.Status_MaNV.Size = new System.Drawing.Size(61, 20);
+            this.Status_MaNV.Text = "Mã NV: ";
+            // 
+            // Status_HoTenNV
+            // 
+            this.Status_HoTenNV.Name = "Status_HoTenNV";
+            this.Status_HoTenNV.Size = new System.Drawing.Size(85, 20);
+            this.Status_HoTenNV.Text = "Họ tên NV: ";
+            // 
+            // Status_Nhom
+            // 
+            this.Status_Nhom.Name = "Status_Nhom";
+            this.Status_Nhom.Size = new System.Drawing.Size(57, 20);
+            this.Status_Nhom.Text = "Nhóm: ";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1918, 1040);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupFunc);
             this.IsMdiContainer = true;
             this.Name = "Main";
             this.Text = "Trang Chủ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.groupFunc)).EndInit();
             this.groupFunc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -333,7 +380,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Group_VatTuKho)).EndInit();
             this.Group_VatTuKho.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -341,8 +391,8 @@
 
         private DevExpress.XtraEditors.GroupControl groupFunc;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SimpleButton btnExit;
-        private DevExpress.XtraEditors.SimpleButton btnDangXuat;
+        private DevExpress.XtraEditors.SimpleButton Btn_Thoat;
+        private DevExpress.XtraEditors.SimpleButton Btn_DangXuat;
         private DevExpress.XtraEditors.GroupControl Group_BaoCao;
         private DevExpress.XtraEditors.SimpleButton Btn_DSNV;
         private DevExpress.XtraEditors.SimpleButton Btn_DMVT;
@@ -361,5 +411,9 @@
         private DevExpress.XtraEditors.SimpleButton Btn_CTNX;
         private DevExpress.XtraEditors.SimpleButton Btn_THNX;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel Status_MaNV;
+        private System.Windows.Forms.ToolStripStatusLabel Status_HoTenNV;
+        private System.Windows.Forms.ToolStripStatusLabel Status_Nhom;
     }
 }

@@ -182,7 +182,9 @@
             this.Controls.Add(this.Cmb_ChiNhanh);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DangNhap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.DangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Cmb_ChiNhanh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_Username.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txt_MatKhau.Properties)).EndInit();

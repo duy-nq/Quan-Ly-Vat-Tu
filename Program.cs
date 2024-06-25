@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
+using dotenv.net;
+using DevExpress.XtraEditors;
 
 namespace Quan_Ly_Vat_Tu
 {
@@ -37,11 +39,13 @@ namespace Quan_Ly_Vat_Tu
         public static String username_DN;
         public static String password_DN;
 
+        public static int main_chinhanh;
         public static String main_group;
         public static String main_hoTen;
         public static String main_maNV;
 
         public static DataTable DT_ChiNhanh = new DataTable();
+        public static DataTable DT_DSVT = new DataTable();
 
         public static int KetNoi()
         {
@@ -71,7 +75,7 @@ namespace Quan_Ly_Vat_Tu
             
             try
             {
-                Program.connection_string = "Data Source=" + Program.server_name + ";Initial Catalog=" + Program.database + ";User ID=" +
+                Program.connection_string = "Data Source=" + Program.main_server + ";Initial Catalog=" + Program.database + ";User ID=" +
                       default_login + ";password=" + default_password;
                 Program.connection.ConnectionString = Program.connection_string;
                 Program.connection.Open();
@@ -93,6 +97,93 @@ namespace Quan_Ly_Vat_Tu
             return table;
         }
 
+        public static SqlDataReader ExecSqlDataReader(String cmd)
+        {
+            SqlDataReader myreader;
+
+            // SqlCommand sqlcmd = new SqlCommand(cmd, Program conn);
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Program.connection;
+            sqlcmd.CommandText = cmd;
+            sqlcmd.CommandType = CommandType.Text;
+
+            if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+            try
+            {
+                myreader = sqlcmd.ExecuteReader();
+                return myreader;
+            }
+            catch (SqlException ex)
+            {
+                Program.connection.Close();
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public static void ConfigToRemoteServer(ComboBoxEdit cmb)
+        {
+            if (cmb.Text.ToString() == "System.Data.DataRowView") return;
+            server_name = Get_ServerName(cmb.Text);
+
+            if (cmb.SelectedIndex != main_chinhanh)
+            {
+                username = remote_username;
+                password = remote_password;
+            }
+            else
+            {
+                username = username_DN;
+                password = password_DN;
+            }
+        }
+
+        public static void LoadChiNhanh(ComboBoxEdit cmb)
+        {
+            foreach (DataRow dr in Program.DT_ChiNhanh.Rows)
+            {
+                cmb.Properties.Items.Add(dr["TenCN"]);
+            }
+
+            cmb.SelectedIndex = Program.main_chinhanh;
+        }
+
+        public static void LoadVatTu(ComboBoxEdit cmb)
+        {
+            DT_DSVT.Clear();
+            cmb.Properties.Items.Clear();
+
+            cmb.Properties.Items.Add("-Lựa chọn vật tư-");
+
+            string Sql_Query = "SELECT * FROM QLVT_DATHANG.dbo.View_DSVT";
+
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            if (DT_DSVT.Rows.Count == 0)
+            {
+                SqlDataAdapter da = new SqlDataAdapter(Sql_Query, connection);
+                da.Fill(DT_DSVT);
+            }
+
+            foreach (DataRow dr in DT_DSVT.Rows)
+            {
+                cmb.Properties.Items.Add(dr["TENVT"]);
+            }
+
+            cmb.SelectedIndex = 0;
+            try
+            {
+                cmb.SelectedIndex = 1;
+            }
+            finally
+            {
+                cmb.SelectedIndex = 0;
+            }
+        }
+
         public static String Get_ServerName(string tenCN)
         {
             foreach (DataRow dr in DT_ChiNhanh.Rows)
@@ -106,14 +197,52 @@ namespace Quan_Ly_Vat_Tu
             return "ERR-NOT-FOUND";
         }
 
+        public static bool CanBeDelete(BindingSource parent)
+        {
+            if (parent.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xóa!");
+                return false;
+            }
 
+            return true;
+        }
+
+        public static bool CanBeDelete(BindingSource parent, BindingSource child)
+        {
+            if (parent.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xóa!");
+                return false;
+            }
+
+            if (child.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa vì đã có " + child.Count + " dữ liệu phụ thuộc!");
+                return false;
+            }
+
+            return true;
+        }
+
+        //static void LoadEnvVariables()
+        //{
+        //DotEnv.Load();
+
+        //Program.main_server = Environment.GetEnvironmentVariable("MAIN_SERVER");
+        //Program.server_1 = Environment.GetEnvironmentVariable("SERVER_1");
+        //Program.server_2 = Environment.GetEnvironmentVariable("SERVER_2");
+        //Program.server_3 = Environment.GetEnvironmentVariable("SERVER_3");
+        //}
 
         [STAThread]
         static void Main()
         {
+            //LoadEnvVariables();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DangNhap());
         }
     }
 }
+    
