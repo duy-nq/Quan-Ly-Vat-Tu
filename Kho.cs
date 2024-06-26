@@ -160,7 +160,7 @@ namespace Quan_Ly_Vat_Tu
             }
 
             String Sql_Query =
-                "EXEC QLVT.dbo.SP_KiemTraKho '" + Txt_MaKho.Text.Trim() + "'";
+                "EXEC QLVT_DATHANG.dbo.SP_KiemTraKho '" + Txt_MaKho.Text.Trim() + "'";
             SqlCommand command = new SqlCommand(Sql_Query, Program.connection);
             SqlDataReader reader = command.ExecuteReader();
 

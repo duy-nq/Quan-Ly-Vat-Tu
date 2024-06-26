@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using Quan_Ly_Vat_Tu.DSTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,14 @@ namespace Quan_Ly_Vat_Tu
 
         private void FormChonKhoHang_Load(object sender, EventArgs e)
         {
+            KHOTableAdapter.Connection.ConnectionString = Program.connection_string;
             this.KHOTableAdapter.Fill(this.DS.Kho);
         }
 
         private void Btn_XacNhan_Click(object sender, EventArgs e)
         {
             DonDatHang.makho = ((DataRowView)Bds_Kho[Bds_Kho.Position])["MAKHO"].ToString();
+            PhieuXuat.makho = ((DataRowView)Bds_Kho[Bds_Kho.Position])["MAKHO"].ToString();
             this.Close();
         }
 

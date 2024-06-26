@@ -494,6 +494,7 @@
             this.sqlDataSource1});
             this.DataMember = "NhanVien";
             this.DataSource = this.sqlDataSource1;
+            this.FilterString = "[TrangThaiXoa] <> True";
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
             this.Landscape = true;
             this.PageHeight = 827;

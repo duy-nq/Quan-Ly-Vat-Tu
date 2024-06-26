@@ -70,7 +70,7 @@ namespace Quan_Ly_Vat_Tu
             return null;
         }
 
-        private void GetInfo()
+        private bool GetInfo()
         {
             if (Program.KetNoi() == 1)
             {
@@ -97,7 +97,7 @@ namespace Quan_Ly_Vat_Tu
                 catch (Exception ex)
                 {
                     MessageBox.Show("Không tìm thấy thông tin tài khoản\n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
+                    return false;
                 }
                 finally
                 {
@@ -105,7 +105,9 @@ namespace Quan_Ly_Vat_Tu
                 }
 
             }
-            else return;
+            else return false;
+
+            return true;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -129,7 +131,7 @@ namespace Quan_Ly_Vat_Tu
                 Program.server_name = Program.Get_ServerName(Cmb_ChiNhanh.Text);
             }
 
-            GetInfo();
+            if (!GetInfo()) return;
 
             Hide();
             Txt_Username.Text = Txt_MatKhau.Text = "";

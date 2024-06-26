@@ -96,7 +96,6 @@
             this.Txt_CTDH_MaSoDDH = new DevExpress.XtraEditors.TextEdit();
             this.Group_DonDatHang = new DevExpress.XtraEditors.GroupControl();
             this.Btn_ChonKhoHang = new DevExpress.XtraEditors.SimpleButton();
-            this.Btn_ChonNhanVien = new DevExpress.XtraEditors.SimpleButton();
             this.Txt_MaNV = new DevExpress.XtraEditors.TextEdit();
             this.Txt_MaKho = new DevExpress.XtraEditors.TextEdit();
             this.Txt_NhaCC = new DevExpress.XtraEditors.TextEdit();
@@ -815,7 +814,6 @@
             // Group_DonDatHang
             // 
             this.Group_DonDatHang.Controls.Add(this.Btn_ChonKhoHang);
-            this.Group_DonDatHang.Controls.Add(this.Btn_ChonNhanVien);
             this.Group_DonDatHang.Controls.Add(this.Txt_MaNV);
             this.Group_DonDatHang.Controls.Add(mAKHOLabel);
             this.Group_DonDatHang.Controls.Add(this.Txt_MaKho);
@@ -844,21 +842,6 @@
             this.Btn_ChonKhoHang.TabIndex = 12;
             this.Btn_ChonKhoHang.Text = "CHỌN KHO HÀNG";
             this.Btn_ChonKhoHang.Click += new System.EventHandler(this.Btn_ChonKhoHang_Click);
-            // 
-            // Btn_ChonNhanVien
-            // 
-            this.Btn_ChonNhanVien.Appearance.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.Btn_ChonNhanVien.Appearance.BorderColor = System.Drawing.Color.White;
-            this.Btn_ChonNhanVien.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.Btn_ChonNhanVien.Appearance.Options.UseBackColor = true;
-            this.Btn_ChonNhanVien.Appearance.Options.UseBorderColor = true;
-            this.Btn_ChonNhanVien.Appearance.Options.UseForeColor = true;
-            this.Btn_ChonNhanVien.Location = new System.Drawing.Point(520, 44);
-            this.Btn_ChonNhanVien.Name = "Btn_ChonNhanVien";
-            this.Btn_ChonNhanVien.Size = new System.Drawing.Size(121, 27);
-            this.Btn_ChonNhanVien.TabIndex = 11;
-            this.Btn_ChonNhanVien.Text = "CHỌN NHÂN VIÊN";
-            this.Btn_ChonNhanVien.Click += new System.EventHandler(this.Btn_ChonNhanVien_Click);
             // 
             // Txt_MaNV
             // 
@@ -897,6 +880,7 @@
             // 
             this.Date_Ngay.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.Bds_DatHang, "NGAY", true));
             this.Date_Ngay.EditValue = null;
+            this.Date_Ngay.Enabled = false;
             this.Date_Ngay.Location = new System.Drawing.Point(124, 94);
             this.Date_Ngay.MenuManager = this.barManager1;
             this.Date_Ngay.Name = "Date_Ngay";
@@ -1059,7 +1043,6 @@
         private DevExpress.XtraBars.BarButtonItem Btn_CTDDH;
         private DevExpress.XtraBars.BarLargeButtonItem Btn_ChonCheDo;
         private DevExpress.XtraEditors.SimpleButton Btn_ChonKhoHang;
-        private DevExpress.XtraEditors.SimpleButton Btn_ChonNhanVien;
         private DevExpress.XtraEditors.SimpleButton Btn_ChonVatTu;
         private System.Windows.Forms.BindingSource Bds_PhieuNhap;
         private DSTableAdapters.PhieuNhapTableAdapter PHIEUNHAPTableAdapter;

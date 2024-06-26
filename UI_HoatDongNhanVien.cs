@@ -21,17 +21,6 @@ namespace Quan_Ly_Vat_Tu
         public UI_HoatDongNhanVien()
         {
             InitializeComponent();
-
-            if (Program.main_group == "CHINHANH")
-            {
-                Cmb_DSNV.Enabled = false;
-                Cmb_DSNV.Text = Program.main_maNV;
-                txt_TenNV.Text = Program.main_hoTen;
-            }
-            else
-            {
-                Load_DSNV();
-            }
         }
 
         public void Load_DSNV()
@@ -43,16 +32,19 @@ namespace Quan_Ly_Vat_Tu
                 Program.connection.Open();
             }
 
+            DT_DSNV.Clear();
+            Cmb_DSNV.Properties.Items.Clear();
+
             SqlDataAdapter da = new SqlDataAdapter(Sql_Query, Program.connection);
             da.Fill(DT_DSNV);
 
             foreach (DataRow dr in DT_DSNV.Rows)
             {
-                Cmb_DSNV.Properties.Items.Add(dr["MANV"]);
+                if (dr["TrangThaiXoa"].ToString() != "True") 
+                    Cmb_DSNV.Properties.Items.Add(dr["MANV"]);
             }
 
             Cmb_DSNV.SelectedIndex = 0;
-            Cmb_DSNV.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
         }
 
         private String Get_TenNV(string manv)
@@ -79,6 +71,35 @@ namespace Quan_Ly_Vat_Tu
 
             ReportPrintTool print = new ReportPrintTool(HDNV);
             print.ShowPreviewDialog();
+        }
+
+        private void Cmb_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Program.ConfigToRemoteServer(Cmb_ChiNhanh);
+
+            if (Program.KetNoi() == 0) return;
+            else
+            {
+                DT_DSNV.Clear();
+                Cmb_DSNV.Properties.Items.Clear();
+                Load_DSNV();
+            }
+        }
+
+        private void UI_HoatDongNhanVien_Load(object sender, EventArgs e)
+        {
+            Program.LoadChiNhanh(Cmb_ChiNhanh);
+            Load_DSNV();
+
+            if (Program.main_group == "CHINHANH")
+            {
+                Cmb_DSNV.Text = Program.main_maNV;
+                txt_TenNV.Text = Program.main_hoTen;
+            }
+            else
+            {
+                Cmb_ChiNhanh.Enabled = true;
+            }
         }
     }
 }

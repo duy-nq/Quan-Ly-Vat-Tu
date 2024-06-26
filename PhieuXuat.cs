@@ -14,6 +14,8 @@ namespace Quan_Ly_Vat_Tu
 {
     public partial class PhieuXuat : DevExpress.XtraEditors.XtraForm
     {
+        public static string makho;
+        
         int vitri = 0;
         bool dangThemMoi = false;
         private bool CTMode = true;
@@ -376,6 +378,29 @@ namespace Quan_Ly_Vat_Tu
             UndoRecord(CTMode ? phieuXuatBindingSource : cTPXBindingSource);
 
             ReverseSetting();
+        }
+
+        private Form CheckExists(Type ftype)
+        {
+            foreach (Form f in this.MdiChildren)
+                if (f.GetType() == ftype)
+                {
+                    return f;
+                }
+            return null;
+        }
+
+        private void Btn_Kho_Click(object sender, EventArgs e)
+        {
+            Form f = this.CheckExists(typeof(FormChonKhoHang));
+            if (f != null) { f.Activate(); }
+            else
+            {
+                FormChonKhoHang frm = new FormChonKhoHang();
+                frm.ShowDialog();
+            }
+
+            Txt_MaKho.Text = makho;
         }
     }
 }

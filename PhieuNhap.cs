@@ -61,6 +61,36 @@ namespace Quan_Ly_Vat_Tu
             this.cTPNTableAdapter.Fill(this.dS.CTPN);
         }
 
+        private void VTCN_Load()
+        {
+            DT_DSVT.Clear();
+            Cmb_DSVT.Properties.Items.Clear();
+
+            Cmb_DSVT.Properties.Items.Add("-Lựa chọn vật tư-");
+
+            string Sql_Query = "EXEC QLVT_DATHANG.dbo.SP_VatTuChuaNhap '" + Txt_MSDDH.Text + "'";
+
+            using (SqlConnection connection =
+                   new SqlConnection(Program.connection_string))
+            {
+                SqlCommand command =
+                    new SqlCommand(Sql_Query, connection);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Cmb_DSVT.Properties.Items.Add(reader[1].ToString());
+                    DT_DSVT.Rows.Add(reader[0].ToString(), reader[1].ToString(), (int)reader[2]);
+                }
+
+                reader.Close();
+            }
+
+            Cmb_DSVT.SelectedIndex = 0;
+        }
+
         private void PhieuNhap_Load(object sender, EventArgs e)
         {
             Dataset_Load();
@@ -112,33 +142,7 @@ namespace Quan_Ly_Vat_Tu
 
         private void mAPNTextEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (CTMode) return;
-            DT_DSVT.Clear();
-            Cmb_DSVT.Properties.Items.Clear();
-
-            Cmb_DSVT.Properties.Items.Add("-Lựa chọn vật tư-");
-
-            string Sql_Query = "EXEC QLVT_DATHANG.dbo.SP_VatTuChuaNhap '" + Txt_MSDDH.Text + "'";
-
-            using (SqlConnection connection =
-                   new SqlConnection(Program.connection_string))
-            {
-                SqlCommand command =
-                    new SqlCommand(Sql_Query, connection);
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Cmb_DSVT.Properties.Items.Add(reader[1].ToString());
-                    DT_DSVT.Rows.Add(reader[0].ToString(), reader[1].ToString(), (int)reader[2]);
-                }
-
-                reader.Close();
-            }
-
-            Cmb_ChiNhanh.SelectedIndex = 0;
+            
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -318,6 +322,19 @@ namespace Quan_Ly_Vat_Tu
             }
         }
 
+        private void Setting()
+        {
+            groupControl1.Enabled = false;
+
+            BtnXoa.Enabled = false;
+            BtnThem.Enabled = false;
+            BtnSua.Enabled = false;
+            BtnReload.Enabled = false;
+            simpleButton1.Enabled = false;
+            BtnUndo.Enabled = true;
+            BtnGhi.Enabled = true;
+        }
+
         private void ReverseSetting()
         {
             groupControl1.Enabled = true;
@@ -331,6 +348,7 @@ namespace Quan_Ly_Vat_Tu
             BtnReload.Enabled = true;
             BtnUndo.Enabled = false;
             BtnGhi.Enabled = false;
+            simpleButton1.Enabled = true;
 
             labelControl1.Visible = false;
             Cmb_DSVT.Visible = false;
@@ -339,20 +357,16 @@ namespace Quan_Ly_Vat_Tu
         private void BtnThem_Click(object sender, EventArgs e)
         {
             dangThemMoi = true;
-            groupControl1.Enabled = false;
 
-            BtnXoa.Enabled = false;
-            BtnThem.Enabled = false;
-            BtnSua.Enabled = false;
-            BtnReload.Enabled = false;
-            BtnUndo.Enabled = true;
-            BtnGhi.Enabled = true;
+            Setting();
 
             if (!CTMode)
             {
                 groupControl3.Enabled = true;
                 labelControl1.Visible = true;
                 Cmb_DSVT.Visible = true;
+
+                VTCN_Load();
 
                 if (Cmb_DSVT.Properties.Items.Count == 1)
                 {
@@ -408,6 +422,12 @@ namespace Quan_Ly_Vat_Tu
             BtnGhi.Enabled = true;
 
             vitri = CTMode ? phieuNhapBindingSource.Position : cTPNBindingSource.Position;
+            BindingSource bds = CTMode ? phieuNhapBindingSource : cTPNBindingSource;
+
+            if (bds.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để sửa!", "Thông báo");
+            }
 
             groupControl1.Enabled = false;
 
@@ -463,6 +483,11 @@ namespace Quan_Ly_Vat_Tu
 
             if (Program.KetNoi() == 0) return;
             else Dataset_Load();
+        }
+
+        private void Txt_MSDDH_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

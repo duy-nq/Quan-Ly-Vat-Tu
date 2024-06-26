@@ -174,14 +174,6 @@ namespace Quan_Ly_Vat_Tu
             }
 
             cmb.SelectedIndex = 0;
-            try
-            {
-                cmb.SelectedIndex = 1;
-            }
-            finally
-            {
-                cmb.SelectedIndex = 0;
-            }
         }
 
         public static String Get_ServerName(string tenCN)

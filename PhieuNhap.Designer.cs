@@ -656,6 +656,7 @@
             this.Txt_MSDDH.Properties.Appearance.Options.UseFont = true;
             this.Txt_MSDDH.Size = new System.Drawing.Size(168, 34);
             this.Txt_MSDDH.TabIndex = 18;
+            this.Txt_MSDDH.EditValueChanged += new System.EventHandler(this.Txt_MSDDH_EditValueChanged);
             // 
             // cTPNTableAdapter
             // 

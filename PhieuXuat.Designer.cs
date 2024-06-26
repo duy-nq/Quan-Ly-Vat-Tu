@@ -77,6 +77,7 @@
             this.Txt_DonGia = new DevExpress.XtraEditors.TextEdit();
             this.Txt_SoLuong = new DevExpress.XtraEditors.TextEdit();
             this.Txt_MaVT = new DevExpress.XtraEditors.TextEdit();
+            this.Btn_Kho = new DevExpress.XtraEditors.SimpleButton();
             mAPXLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             hOTENKHLabel = new System.Windows.Forms.Label();
@@ -127,7 +128,7 @@
             // 
             nGAYLabel.AutoSize = true;
             nGAYLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nGAYLabel.Location = new System.Drawing.Point(402, 94);
+            nGAYLabel.Location = new System.Drawing.Point(462, 94);
             nGAYLabel.Name = "nGAYLabel";
             nGAYLabel.Size = new System.Drawing.Size(95, 28);
             nGAYLabel.TabIndex = 2;
@@ -157,7 +158,7 @@
             // 
             mANVLabel.AutoSize = true;
             mANVLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mANVLabel.Location = new System.Drawing.Point(414, 172);
+            mANVLabel.Location = new System.Drawing.Point(474, 172);
             mANVLabel.Name = "mANVLabel";
             mANVLabel.Size = new System.Drawing.Size(74, 28);
             mANVLabel.TabIndex = 9;
@@ -482,6 +483,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.Btn_Kho);
             this.groupControl1.Controls.Add(mANVLabel);
             this.groupControl1.Controls.Add(this.Txt_MaNV);
             this.groupControl1.Controls.Add(mAKHOLabel);
@@ -504,7 +506,7 @@
             // 
             this.Txt_MaNV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MANV", true));
             this.Txt_MaNV.Enabled = false;
-            this.Txt_MaNV.Location = new System.Drawing.Point(503, 169);
+            this.Txt_MaNV.Location = new System.Drawing.Point(563, 169);
             this.Txt_MaNV.Name = "Txt_MaNV";
             this.Txt_MaNV.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_MaNV.Properties.Appearance.Options.UseFont = true;
@@ -514,6 +516,7 @@
             // Txt_MaKho
             // 
             this.Txt_MaKho.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MAKHO", true));
+            this.Txt_MaKho.Enabled = false;
             this.Txt_MaKho.Location = new System.Drawing.Point(158, 169);
             this.Txt_MaKho.Name = "Txt_MaKho";
             this.Txt_MaKho.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -536,7 +539,7 @@
             this.DE_PhieuXuat.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "NGAY", true));
             this.DE_PhieuXuat.EditValue = null;
             this.DE_PhieuXuat.Enabled = false;
-            this.DE_PhieuXuat.Location = new System.Drawing.Point(503, 91);
+            this.DE_PhieuXuat.Location = new System.Drawing.Point(563, 91);
             this.DE_PhieuXuat.Name = "DE_PhieuXuat";
             this.DE_PhieuXuat.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DE_PhieuXuat.Properties.Appearance.Options.UseFont = true;
@@ -622,6 +625,17 @@
             this.Txt_MaVT.Size = new System.Drawing.Size(264, 34);
             this.Txt_MaVT.TabIndex = 1;
             // 
+            // Btn_Kho
+            // 
+            this.Btn_Kho.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Kho.Appearance.Options.UseFont = true;
+            this.Btn_Kho.Location = new System.Drawing.Point(337, 169);
+            this.Btn_Kho.Name = "Btn_Kho";
+            this.Btn_Kho.Size = new System.Drawing.Size(103, 35);
+            this.Btn_Kho.TabIndex = 11;
+            this.Btn_Kho.Text = "Chọn kho";
+            this.Btn_Kho.Click += new System.EventHandler(this.Btn_Kho_Click);
+            // 
             // PhieuXuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -706,5 +720,6 @@
         private DevExpress.XtraEditors.TextEdit Txt_SoLuong;
         private DevExpress.XtraEditors.TextEdit Txt_MaVT;
         private DevExpress.XtraEditors.ComboBoxEdit Cmb_VatTu;
+        private DevExpress.XtraEditors.SimpleButton Btn_Kho;
     }
 }

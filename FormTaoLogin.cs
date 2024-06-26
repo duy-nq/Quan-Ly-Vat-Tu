@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using Quan_Ly_Vat_Tu.DSTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

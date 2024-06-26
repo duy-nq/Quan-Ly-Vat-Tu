@@ -77,8 +77,11 @@ namespace Quan_Ly_Vat_Tu
             Bds_NhanVien.AddNew();
             Txt_MaNV.Enabled = true;
             Txt_MaCN.Text = macn;
-            Txt_MaCN.Enabled = false;
+            Txt_MaCN.Enabled = trangThaiXoaCheckEdit.Enabled = false;
             Date_NgaySinh.EditValue = "";
+
+            Btn_ChuyenChiNhanh.Enabled = false;
+            trangThaiXoaCheckEdit.EditValue = false;
 
             Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = false;
             Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = true;
@@ -92,8 +95,11 @@ namespace Quan_Ly_Vat_Tu
             Txt_MaNV.Enabled = Txt_MaCN.Enabled = false;
             Gc_NhanVien.Enabled = false;
             Panel_NhapLieu.Enabled = true;
+            trangThaiXoaCheckEdit.Enabled = false;
             Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = false;
             Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = true;
+            Btn_ChuyenChiNhanh.Enabled = false;
+
         }
 
         private void Btn_Xoa_ItemClick(object sender, ItemClickEventArgs e)
@@ -229,6 +235,7 @@ namespace Quan_Ly_Vat_Tu
             Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
             Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
             Panel_NhapLieu.Enabled = false;
+            Btn_ChuyenChiNhanh.Enabled = true;
         }
 
         private void Btn_PhucHoi_ItemClick(object sender, ItemClickEventArgs e)
@@ -245,6 +252,7 @@ namespace Quan_Ly_Vat_Tu
             Panel_NhapLieu.Enabled = false;
             Btn_Them.Enabled = Btn_Sua.Enabled = Btn_Xoa.Enabled = Btn_LamMoi.Enabled = Btn_Thoat.Enabled = true;
             Btn_Ghi.Enabled = Btn_PhucHoi.Enabled = false;
+            Btn_ChuyenChiNhanh.Enabled = false;
         }
 
         private void Btn_LamMoi_ItemClick(object sender, ItemClickEventArgs e)

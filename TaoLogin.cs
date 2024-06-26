@@ -116,6 +116,9 @@ namespace Quan_Ly_Vat_Tu
                 FormTaoLogin frm = new FormTaoLogin();
                 frm.ShowDialog();
             }
+
+            this.NHANVIENTableAdapter.Connection.ConnectionString = Program.connection_string;
+            this.NHANVIENTableAdapter.Fill(this.DS.View_NhanVienChuaCoLoginName);
         }
 
         private Form CheckExists(Type ftype)

@@ -111,19 +111,6 @@ namespace Quan_Ly_Vat_Tu
             if (bds.Count == 0) Btn_Xoa.Enabled = false;
         }
 
-        private void Btn_ChonNhanVien_Click(object sender, EventArgs e)
-        {
-            Form f = this.CheckExists(typeof(FormChonNhanVien));
-            if (f != null) { f.Activate(); }
-            else
-            {
-                FormChonNhanVien frm = new FormChonNhanVien();
-                frm.ShowDialog();
-            }
-
-            Txt_MaNV.Text = manv;
-        }
-
         private void Btn_ChonKhoHang_Click(object sender, EventArgs e)
         {
             Form f = this.CheckExists(typeof(FormChonKhoHang));
@@ -193,15 +180,26 @@ namespace Quan_Ly_Vat_Tu
         {
             dangThem = true;
             vitri = bds.Position;
-            bds.AddNew();
-
+            
             if (chedo == "DATHANG")
             {
+                bds.AddNew();
                 Group_DonDatHang.Enabled = true;
+                Txt_MaSoDDH.Enabled = true;
                 Txt_MaNV.Enabled = Txt_MaKho.Enabled = false;
-                Date_Ngay.EditValue = "";
-            } else if (chedo == "CTDDH")
+                Date_Ngay.EditValue = DateTime.Now.Date;
+                Txt_MaNV.Text = Program.main_maNV;
+            }
+            else if (chedo == "CTDDH")
             {
+                if (Bds_DatHang.Count == 0)
+                {
+                    MessageBox.Show("Chưa có đơn đặt hàng nào", "Thông báo");
+                    return;
+                }
+
+                bds.AddNew();
+
                 masoddh = ((DataRowView)Bds_DatHang[Bds_DatHang.Position])["MasoDDH"].ToString();
 
                 Group_CTDDH.Enabled = true;
@@ -239,6 +237,11 @@ namespace Quan_Ly_Vat_Tu
 
             if (chedo == "DATHANG")
             {
+                if (Bds_DatHang.Count == 0)
+                {
+                    MessageBox.Show("Chưa có đơn đặt hàng nào", "Thông báo");
+                    return;
+                }
                 if (Bds_CTDDH.Count > 0)
                 {
                     MessageBox.Show("Đơn đặt hàng đã được lập chi tiết đơn hàng, không thể xóa", "", MessageBoxButtons.OK);
@@ -269,6 +272,11 @@ namespace Quan_Ly_Vat_Tu
             }
             else if (chedo == "CTDDH")
             {
+                if (Bds_CTDDH.Count == 0)
+                {
+                    MessageBox.Show("Chưa có đơn đặt hàng nào", "Thông báo");
+                    return;
+                }
                 if (MessageBox.Show("Bạn thật sự muốn xóa chi tiết đơn hàng này?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     try
@@ -299,13 +307,6 @@ namespace Quan_Ly_Vat_Tu
                 {
                     MessageBox.Show("Mã đơn đặt hàng không được thiếu!", "", MessageBoxButtons.OK);
                     Txt_MaSoDDH.Focus();
-                    return false;
-                }
-                if (Txt_MaNV.Text.Trim() == "")
-                {
-                    MessageBox.Show("Mã nhân viên không được thiếu!\nHãy ấn nút CHỌN NHÂN VIÊN để chọn mã nhân viên", "", MessageBoxButtons.OK);
-                    Txt_MaNV.Focus();
-                    Btn_ChonNhanVien.Focus();
                     return false;
                 }
                 if (Txt_MaKho.Text.Trim() == "")
@@ -370,7 +371,7 @@ namespace Quan_Ly_Vat_Tu
 
             if (chedo == "DATHANG")
             {
-                String Sql_Query = "EXEC QLVT.dbo.SP_KiemTraDonDatHang '" + Txt_MaSoDDH.Text.Trim() + "'";
+                String Sql_Query = "EXEC QLVT_DATHANG.dbo.SP_KiemTraDonDatHang '" + Txt_MaSoDDH.Text.Trim() + "'";
                 SqlCommand command = new SqlCommand(Sql_Query, Program.connection);
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -406,7 +407,7 @@ namespace Quan_Ly_Vat_Tu
                 {
                     if (dangThem == true)
                     {
-                        String Sql_Query = "EXEC QLVT.dbo.SP_ThemChiTietDonHang '" + Txt_CTDH_MaSoDDH.Text.Trim() + "', '" + Txt_MaVT.Text.Trim() + "', '"
+                        String Sql_Query = "EXEC QLVT_DATHANG.dbo.SP_ThemChiTietDonHang '" + Txt_CTDH_MaSoDDH.Text.Trim() + "', '" + Txt_MaVT.Text.Trim() + "', '"
                         + Spin_SoLuong.Value + "', '" + Txt_DonGia.Text.Trim() + "'";
                         SqlCommand command = new SqlCommand(Sql_Query, Program.connection);
                         SqlDataReader reader = command.ExecuteReader();

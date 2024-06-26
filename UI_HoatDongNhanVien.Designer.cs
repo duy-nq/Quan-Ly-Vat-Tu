@@ -38,18 +38,21 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.Cmb_DSNV = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.Cmb_ChiNhanh = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txt_TenNV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cmb_DSNV.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cmb_ChiNhanh.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_TenNV
             // 
             this.txt_TenNV.Enabled = false;
-            this.txt_TenNV.Location = new System.Drawing.Point(317, 177);
+            this.txt_TenNV.Location = new System.Drawing.Point(318, 265);
             this.txt_TenNV.Name = "txt_TenNV";
             this.txt_TenNV.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_TenNV.Properties.Appearance.Options.UseFont = true;
@@ -75,7 +78,7 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(36, 305);
+            this.simpleButton2.Location = new System.Drawing.Point(37, 393);
             this.simpleButton2.Margin = new System.Windows.Forms.Padding(1);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(88, 28);
@@ -89,7 +92,7 @@
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseBackColor = true;
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(317, 229);
+            this.labelControl2.Location = new System.Drawing.Point(318, 317);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(101, 17);
             this.labelControl2.TabIndex = 35;
@@ -98,7 +101,7 @@
             // dateEdit3
             // 
             this.dateEdit3.EditValue = null;
-            this.dateEdit3.Location = new System.Drawing.Point(317, 252);
+            this.dateEdit3.Location = new System.Drawing.Point(318, 340);
             this.dateEdit3.Margin = new System.Windows.Forms.Padding(1);
             this.dateEdit3.Name = "dateEdit3";
             this.dateEdit3.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,7 +119,7 @@
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseBackColor = true;
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(36, 229);
+            this.labelControl3.Location = new System.Drawing.Point(37, 317);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(97, 17);
             this.labelControl3.TabIndex = 33;
@@ -125,7 +128,7 @@
             // dateEdit4
             // 
             this.dateEdit4.EditValue = null;
-            this.dateEdit4.Location = new System.Drawing.Point(36, 252);
+            this.dateEdit4.Location = new System.Drawing.Point(37, 340);
             this.dateEdit4.Margin = new System.Windows.Forms.Padding(1);
             this.dateEdit4.Name = "dateEdit4";
             this.dateEdit4.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -143,7 +146,7 @@
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseBackColor = true;
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(317, 154);
+            this.labelControl1.Location = new System.Drawing.Point(318, 242);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(70, 17);
             this.labelControl1.TabIndex = 31;
@@ -155,7 +158,7 @@
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseBackColor = true;
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(36, 154);
+            this.labelControl6.Location = new System.Drawing.Point(37, 242);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(97, 17);
             this.labelControl6.TabIndex = 30;
@@ -163,7 +166,7 @@
             // 
             // Cmb_DSNV
             // 
-            this.Cmb_DSNV.Location = new System.Drawing.Point(36, 174);
+            this.Cmb_DSNV.Location = new System.Drawing.Point(37, 262);
             this.Cmb_DSNV.Name = "Cmb_DSNV";
             this.Cmb_DSNV.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.False;
             this.Cmb_DSNV.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -171,15 +174,46 @@
             this.Cmb_DSNV.Properties.AutoHeight = false;
             this.Cmb_DSNV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.Cmb_DSNV.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.Cmb_DSNV.Size = new System.Drawing.Size(212, 37);
             this.Cmb_DSNV.TabIndex = 39;
             this.Cmb_DSNV.SelectedIndexChanged += new System.EventHandler(this.Cmb_DSNV_SelectedIndexChanged);
+            // 
+            // Cmb_ChiNhanh
+            // 
+            this.Cmb_ChiNhanh.Enabled = false;
+            this.Cmb_ChiNhanh.Location = new System.Drawing.Point(37, 184);
+            this.Cmb_ChiNhanh.Name = "Cmb_ChiNhanh";
+            this.Cmb_ChiNhanh.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.False;
+            this.Cmb_ChiNhanh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_ChiNhanh.Properties.Appearance.Options.UseFont = true;
+            this.Cmb_ChiNhanh.Properties.AutoHeight = false;
+            this.Cmb_ChiNhanh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.Cmb_ChiNhanh.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.Cmb_ChiNhanh.Size = new System.Drawing.Size(325, 29);
+            this.Cmb_ChiNhanh.TabIndex = 40;
+            this.Cmb_ChiNhanh.SelectedIndexChanged += new System.EventHandler(this.Cmb_ChiNhanh_SelectedIndexChanged);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.Options.UseBackColor = true;
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(37, 161);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(117, 17);
+            this.labelControl5.TabIndex = 41;
+            this.labelControl5.Text = "CHỌN CHI NHÁNH";
             // 
             // UI_HoatDongNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 384);
+            this.ClientSize = new System.Drawing.Size(636, 467);
+            this.Controls.Add(this.labelControl5);
+            this.Controls.Add(this.Cmb_ChiNhanh);
             this.Controls.Add(this.Cmb_DSNV);
             this.Controls.Add(this.txt_TenNV);
             this.Controls.Add(this.labelControl4);
@@ -192,12 +226,14 @@
             this.Controls.Add(this.labelControl6);
             this.Name = "UI_HoatDongNhanVien";
             this.Text = "UI_HoatDongNhanVien";
+            this.Load += new System.EventHandler(this.UI_HoatDongNhanVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_TenNV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cmb_DSNV.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cmb_ChiNhanh.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +251,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.ComboBoxEdit Cmb_DSNV;
+        private DevExpress.XtraEditors.ComboBoxEdit Cmb_ChiNhanh;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
     }
 }
