@@ -321,6 +321,12 @@ namespace Quan_Ly_Vat_Tu
 
             if (!CTMode)
             {
+                if (phieuXuatBindingSource.Count == 0)
+                {
+                    MessageBox.Show("Chưa tạo phiếu xuất nào!", "Thông báo");
+                    return;
+                }
+                
                 groupControl2.Enabled = true;
                 Cmb_VatTu.Visible = true;
 
@@ -367,10 +373,23 @@ namespace Quan_Ly_Vat_Tu
 
             if (CTMode)
             {
+                if (phieuXuatBindingSource.Count == 0)
+                {
+                    MessageBox.Show("Không có phiếu xuất để sửa!", "Thông báo");
+                    return;
+                }
+
                 groupControl1.Enabled = true;
-                Txt_MaKho.Focus();
             }
-            else groupControl2.Enabled = true;
+            else
+            {
+                if (cTPXBindingSource.Count == 0)
+                {
+                    MessageBox.Show("Không có phiếu xuất để sửa!", "Thông báo");
+                    return;
+                }
+                groupControl2.Enabled = true;
+            }
         }
 
         private void BtnGhi_Click(object sender, EventArgs e)

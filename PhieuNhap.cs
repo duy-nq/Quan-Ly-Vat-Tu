@@ -430,22 +430,29 @@ namespace Quan_Ly_Vat_Tu
             DE_PhieuNhap.Enabled = false;
 
             vitri = CTMode ? phieuNhapBindingSource.Position : cTPNBindingSource.Position;
-            BindingSource bds = CTMode ? phieuNhapBindingSource : cTPNBindingSource;
-
-            if (bds.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu để sửa!", "Thông báo");
-                return;
-            }
 
             groupControl1.Enabled = false;
 
             if (CTMode)
             {
+                if (phieuNhapBindingSource.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu để sửa!", "Thông báo");
+                    return;
+                }
+
                 groupControl2.Enabled = true;
                 Txt_MaVT.Focus();
             }
-            else groupControl3.Enabled = true;
+            else
+            {
+                if (cTPNBindingSource.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu để sửa!", "Thông báo");
+                    return;
+                }
+                groupControl3.Enabled = true;
+            }
         }
 
         private void BtnGhi_Click(object sender, EventArgs e)

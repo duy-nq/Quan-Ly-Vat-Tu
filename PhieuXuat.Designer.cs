@@ -591,7 +591,7 @@
             // 
             // Cmb_VatTu
             // 
-            this.Cmb_VatTu.Location = new System.Drawing.Point(193, 91);
+            this.Cmb_VatTu.Location = new System.Drawing.Point(193, 51);
             this.Cmb_VatTu.Name = "Cmb_VatTu";
             this.Cmb_VatTu.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cmb_VatTu.Properties.Appearance.Options.UseFont = true;
