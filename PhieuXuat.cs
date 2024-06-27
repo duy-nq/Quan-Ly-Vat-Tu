@@ -208,6 +208,12 @@ namespace Quan_Ly_Vat_Tu
                     MessageBox.Show("Tên khách hàng không được để trống!", "Thông báo");
                     return false;
                 }
+
+                if (Program.IsIDValid("EXEC SP_KiemTraPhieuXuat", Txt_MaPX.Text) == false)
+                {
+                    MessageBox.Show("Mã phiếu xuất đã tồn tại!", "Thông báo");
+                    return false;
+                }
             }
             else
             {

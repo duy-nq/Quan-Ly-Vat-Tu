@@ -217,6 +217,33 @@ namespace Quan_Ly_Vat_Tu
             return true;
         }
 
+        public static bool IsIDValid(string sqlQuery, string id)
+        {
+            string Sql_Query = sqlQuery + " '" + id.Trim() + "'";
+
+            using (SqlConnection connection =
+                                  new SqlConnection(connection_string))
+            {
+                SqlCommand command =
+                    new SqlCommand(Sql_Query, connection);
+                if (connection.State == ConnectionState.Closed) connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() != "")
+                    {
+                        return false;
+                    }
+                }
+
+                reader.Close();
+            }
+
+            return true;
+        }
+
         //static void LoadEnvVariables()
         //{
         //DotEnv.Load();

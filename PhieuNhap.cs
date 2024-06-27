@@ -246,6 +246,12 @@ namespace Quan_Ly_Vat_Tu
                     MessageBox.Show("Mã phiếu nhập không được để trống!", "Thông báo");
                     return false;
                 }
+
+                if (Program.IsIDValid("EXEC SP_KiemTraPhieuNhap", Txt_MaPN.Text) == false)
+                {
+                    MessageBox.Show("Mã phiếu nhập đã tồn tại!", "Thông báo");
+                    return false;
+                }
             }
             else
             {
