@@ -20,7 +20,7 @@ namespace Quan_Ly_Vat_Tu
             xrLabel2.Text = dateStart.ToString("dd/MM/yyyy");
             xrLabel4.Text = dateEnd.ToString("dd/MM/yyyy");
 
-            string connStr = "Data Source=LAPTOP-S1E2VVUK;Initial Catalog=QLVT_DATHANG;User ID=HTKN;Password=123";
+            string connStr = "Data Source=" + Program.server_name + ";Initial Catalog=QLVT_DATHANG;User ID=" + Program.username + ";Password=" + Program.password;
 
             sqlDataSource1.Connection.ConnectionString = connStr;
 

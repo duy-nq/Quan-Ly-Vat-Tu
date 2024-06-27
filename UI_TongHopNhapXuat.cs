@@ -21,7 +21,16 @@ namespace Quan_Ly_Vat_Tu
 
         private void UI_TongHopNhapXuat_Load(object sender, EventArgs e)
         {
+            Program.LoadChiNhanh(Cmb_ChiNhanh);
 
+            if (Program.main_group == "CONGTY")
+            {
+                Cmb_ChiNhanh.Enabled = true;
+            }
+            else
+            {
+                Cmb_ChiNhanh.Enabled = false;
+            }
         }
 
         private void labelControl6_Click(object sender, EventArgs e)
@@ -35,6 +44,11 @@ namespace Quan_Ly_Vat_Tu
 
             ReportPrintTool print = new ReportPrintTool(THNX);
             print.ShowPreviewDialog();
+        }
+
+        private void Cmb_ChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Program.ConfigToRemoteServer(Cmb_ChiNhanh);
         }
     }
 }
