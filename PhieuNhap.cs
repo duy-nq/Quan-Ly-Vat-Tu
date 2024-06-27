@@ -19,6 +19,7 @@ namespace Quan_Ly_Vat_Tu
     {
         //private static readonly Dictionary<string, string> DT_DSVT = new Dictionary<string, string>();
         private static readonly DataTable DT_DSVT = new DataTable();
+        public static string makho;
         private bool CTMode = true;
 
         int vitri = 0;
@@ -102,6 +103,7 @@ namespace Quan_Ly_Vat_Tu
                 BtnThem.Enabled = BtnSua.Enabled = BtnXoa.Enabled = BtnReload.Enabled = false;
                 BtnGhi.Enabled = BtnUndo.Enabled = simpleButton1.Enabled = false;
                 cTPNGridControl.Visible = true;
+                Cmb_ChiNhanh.Enabled = true;
             }
         }
 
@@ -247,7 +249,7 @@ namespace Quan_Ly_Vat_Tu
             }
             else
             {
-                if (Txt_MaVT.Text == "" || Txt_SoLuong.Text == "" || dONGIASpinEdit.Value == 0)
+                if (Txt_MaVT.Text == "" || Txt_SoLuong.Text == "" || dONGIATextEdit.Text == "" || Txt_MaVT.Text == "ERR-NOT-FOUND")
                 {
                     MessageBox.Show("Kiểm tra lại thông tin vật tư!", "Thông báo");
                     return false;
@@ -260,13 +262,14 @@ namespace Quan_Ly_Vat_Tu
         private void SaveProcess01(BindingSource bds)
         {
             groupControl2.Enabled = false;
-            Txt_MaNV.Text = Program.username;
             phieuNhapTableAdapter.Connection.ConnectionString = Program.connection_string;
             phieuNhapTableAdapter.Update(dS.PhieuNhap);
 
             if (dangThemMoi == true)
             {
                 dangThemMoi = false;
+                Cmb_DSVT.Clear();
+                phieuNhapTableAdapter.Connection.ConnectionString = Program.connection_string;
                 phieuNhapTableAdapter.Fill(dS.PhieuNhap);
             }
             else
@@ -283,6 +286,8 @@ namespace Quan_Ly_Vat_Tu
 
             if (dangThemMoi == true)
             {
+                Cmb_DSVT.Clear();
+                cTPNTableAdapter.Connection.ConnectionString = Program.connection_string;
                 cTPNTableAdapter.Fill(dS.CTPN);
                 dangThemMoi = false;
             }
@@ -298,23 +303,12 @@ namespace Quan_Ly_Vat_Tu
             {
                 bds.EndEdit();
 
-                BtnXoa.Enabled = true;
-                BtnSua.Enabled = true;
-                BtnThem.Enabled = true;
-                BtnReload.Enabled = true;
-                BtnUndo.Enabled = false;
-                BtnGhi.Enabled = false;
-                groupControl1.Enabled = true;
-
-                labelControl1.Visible = false;
-                Cmb_DSVT.Visible = false;
-
                 if (CTMode) SaveProcess01(bds);
                 else SaveProcess02(bds);
 
-                Cmb_DSVT.Clear();
-
                 MessageBox.Show("Ghi thành công!", "Thông báo");
+
+                ReverseSetting();
             }
             catch (Exception ex)
             {
@@ -359,24 +353,33 @@ namespace Quan_Ly_Vat_Tu
             dangThemMoi = true;
 
             Setting();
+            Txt_MaNV.Enabled = true;
+            Txt_MaPN.Enabled = true;
+            DE_PhieuNhap.Enabled = true;
 
             if (!CTMode)
             {
+                if (phieuNhapBindingSource.Count == 0)
+                {
+                    MessageBox.Show("Không có phiếu nhập để thêm chi tiết!");
+                    ReverseSetting();
+                    return;
+                }   
+                
                 groupControl3.Enabled = true;
                 labelControl1.Visible = true;
                 Cmb_DSVT.Visible = true;
 
+                cTPNBindingSource.AddNew();
+                vitri = cTPNBindingSource.Position;
+                
                 VTCN_Load();
-
                 if (Cmb_DSVT.Properties.Items.Count == 1)
                 {
                     MessageBox.Show("Không có vật tư để nhập!");
                     ReverseSetting();
                     return;
                 }
-
-                cTPNBindingSource.AddNew();
-                vitri = cTPNBindingSource.Position;
             }
             else
             {
@@ -391,6 +394,7 @@ namespace Quan_Ly_Vat_Tu
                 phieuNhapBindingSource.AddNew();
                 vitri = phieuNhapBindingSource.Position;
                 DE_PhieuNhap.DateTime = DateTime.Now.Date;
+                Txt_MaNV.Text = Program.main_maNV;
             }
         }
 
@@ -414,12 +418,10 @@ namespace Quan_Ly_Vat_Tu
 
         private void BtnSua_Click(object sender, EventArgs e)
         {
-            BtnXoa.Enabled = false;
-            BtnSua.Enabled = false;
-            BtnThem.Enabled = false;
-            BtnReload.Enabled = false;
-            BtnUndo.Enabled = true;
-            BtnGhi.Enabled = true;
+            Setting();
+            Txt_MaNV.Enabled = false;
+            Txt_MaPN.Enabled = false;
+            DE_PhieuNhap.Enabled = false;
 
             vitri = CTMode ? phieuNhapBindingSource.Position : cTPNBindingSource.Position;
             BindingSource bds = CTMode ? phieuNhapBindingSource : cTPNBindingSource;
@@ -427,6 +429,7 @@ namespace Quan_Ly_Vat_Tu
             if (bds.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu để sửa!", "Thông báo");
+                return;
             }
 
             groupControl1.Enabled = false;
@@ -450,19 +453,7 @@ namespace Quan_Ly_Vat_Tu
         {
             UndoRecord(CTMode ? phieuNhapBindingSource : cTPNBindingSource);
 
-            groupControl1.Enabled = true;
-            groupControl2.Enabled = false;
-            groupControl3.Enabled = false;
-
-            BtnXoa.Enabled = true;
-            BtnThem.Enabled = true;
-            BtnSua.Enabled = true;
-            BtnReload.Enabled = true;
-            BtnUndo.Enabled = false;
-            BtnGhi.Enabled = false;
-
-            labelControl1.Visible = false;
-            Cmb_DSVT.Visible = false;
+            ReverseSetting();
         }
 
         private void BtnReload_Click(object sender, EventArgs e)
@@ -488,6 +479,29 @@ namespace Quan_Ly_Vat_Tu
         private void Txt_MSDDH_EditValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private Form CheckExists(Type ftype)
+        {
+            foreach (Form f in this.MdiChildren)
+                if (f.GetType() == ftype)
+                {
+                    return f;
+                }
+            return null;
+        }
+
+        private void Btn_Kho_Click(object sender, EventArgs e)
+        {
+            Form f = this.CheckExists(typeof(FormChonKhoHang));
+            if (f != null) { f.Activate(); }
+            else
+            {
+                FormChonKhoHang frm = new FormChonKhoHang();
+                frm.ShowDialog();
+            }
+
+            Txt_MaKho.Text = makho;
         }
     }
 }

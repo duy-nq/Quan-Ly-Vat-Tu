@@ -67,6 +67,7 @@
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.Btn_Kho = new DevExpress.XtraEditors.SimpleButton();
             this.Txt_MaNV = new DevExpress.XtraEditors.TextEdit();
             this.Txt_MaKho = new DevExpress.XtraEditors.TextEdit();
             this.Txt_TenKH = new DevExpress.XtraEditors.TextEdit();
@@ -77,7 +78,6 @@
             this.Txt_DonGia = new DevExpress.XtraEditors.TextEdit();
             this.Txt_SoLuong = new DevExpress.XtraEditors.TextEdit();
             this.Txt_MaVT = new DevExpress.XtraEditors.TextEdit();
-            this.Btn_Kho = new DevExpress.XtraEditors.SimpleButton();
             mAPXLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             hOTENKHLabel = new System.Windows.Forms.Label();
@@ -502,6 +502,17 @@
             this.groupControl1.TabIndex = 15;
             this.groupControl1.Text = "Phiếu xuất";
             // 
+            // Btn_Kho
+            // 
+            this.Btn_Kho.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Kho.Appearance.Options.UseFont = true;
+            this.Btn_Kho.Location = new System.Drawing.Point(337, 169);
+            this.Btn_Kho.Name = "Btn_Kho";
+            this.Btn_Kho.Size = new System.Drawing.Size(103, 35);
+            this.Btn_Kho.TabIndex = 11;
+            this.Btn_Kho.Text = "Chọn kho";
+            this.Btn_Kho.Click += new System.EventHandler(this.Btn_Kho_Click);
+            // 
             // Txt_MaNV
             // 
             this.Txt_MaNV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.phieuXuatBindingSource, "MANV", true));
@@ -586,6 +597,7 @@
             this.Cmb_VatTu.Properties.Appearance.Options.UseFont = true;
             this.Cmb_VatTu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.Cmb_VatTu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.Cmb_VatTu.Size = new System.Drawing.Size(264, 34);
             this.Cmb_VatTu.TabIndex = 6;
             this.Cmb_VatTu.SelectedIndexChanged += new System.EventHandler(this.Cmb_VatTu_SelectedIndexChanged);
@@ -624,17 +636,6 @@
             this.Txt_MaVT.Properties.Appearance.Options.UseFont = true;
             this.Txt_MaVT.Size = new System.Drawing.Size(264, 34);
             this.Txt_MaVT.TabIndex = 1;
-            // 
-            // Btn_Kho
-            // 
-            this.Btn_Kho.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Kho.Appearance.Options.UseFont = true;
-            this.Btn_Kho.Location = new System.Drawing.Point(337, 169);
-            this.Btn_Kho.Name = "Btn_Kho";
-            this.Btn_Kho.Size = new System.Drawing.Size(103, 35);
-            this.Btn_Kho.TabIndex = 11;
-            this.Btn_Kho.Text = "Chọn kho";
-            this.Btn_Kho.Click += new System.EventHandler(this.Btn_Kho_Click);
             // 
             // PhieuXuat
             // 

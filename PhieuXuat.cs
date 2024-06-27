@@ -46,6 +46,7 @@ namespace Quan_Ly_Vat_Tu
                 BtnGhi.Enabled = BtnUndo.Enabled = simpleButton1.Enabled = false;
 
                 Cmb_ChiNhanh.Enabled = true;
+                cTPXGridControl.Visible = true;
             }
             else
             {
@@ -210,7 +211,7 @@ namespace Quan_Ly_Vat_Tu
             }
             else
             {
-                if (Txt_MaVT.Text == "" || Txt_SoLuong.Text == "" || Txt_DonGia.Text == "")
+                if (Txt_MaVT.Text == "" || Txt_SoLuong.Text == "" || Txt_DonGia.Text == "" || Txt_MaVT.Text == "ERR-NOT-FOUND")
                 {
                     MessageBox.Show("Kiểm tra lại thông tin vật tư!", "Thông báo");
                     return false;
@@ -248,8 +249,8 @@ namespace Quan_Ly_Vat_Tu
             if (dangThemMoi)
             {
                 dangThemMoi = false;
-                cTPXTableAdapter.Fill(dS.CTPX);
                 Cmb_VatTu.SelectedIndex = 0;
+                cTPXTableAdapter.Fill(dS.CTPX);
             }
             else
             {

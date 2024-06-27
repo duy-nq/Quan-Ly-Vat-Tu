@@ -29,6 +29,7 @@ namespace Quan_Ly_Vat_Tu
         {
             DonDatHang.makho = ((DataRowView)Bds_Kho[Bds_Kho.Position])["MAKHO"].ToString();
             PhieuXuat.makho = ((DataRowView)Bds_Kho[Bds_Kho.Position])["MAKHO"].ToString();
+            PhieuNhap.makho = ((DataRowView)Bds_Kho[Bds_Kho.Position])["MAKHO"].ToString();
             this.Close();
         }
 
