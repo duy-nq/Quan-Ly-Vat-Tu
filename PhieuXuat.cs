@@ -211,6 +211,12 @@ namespace Quan_Ly_Vat_Tu
             }
             else
             {
+                if (int.Parse(Txt_SoLuong.Text) <= 0)
+                {
+                    MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo");
+                    return false;
+                }   
+
                 if (Txt_MaVT.Text == "" || Txt_SoLuong.Text == "" || Txt_DonGia.Text == "" || Txt_MaVT.Text == "ERR-NOT-FOUND")
                 {
                     MessageBox.Show("Kiểm tra lại thông tin vật tư!", "Thông báo");
